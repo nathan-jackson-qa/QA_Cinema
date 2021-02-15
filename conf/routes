@@ -2,4 +2,4 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET     /home                       controllers.HomeController.index
 GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
-
+GET     /contact                    controllers.HomeController.contactPage
