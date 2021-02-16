@@ -7,3 +7,4 @@ GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
 GET     /placesToGo                 controllers.placesToGoController.viewAll
+GET     /listingGallery             controllers.GalleryController.index
