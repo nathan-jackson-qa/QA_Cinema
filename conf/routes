@@ -5,3 +5,8 @@ GET     /classifications            controllers.ClassificationController.classif
 GET     /contact                    controllers.HomeController.contactPage
 GET     /openingTimes               controllers.OpeningTimesController.index
 GET     /paypal                     controllers.PayPalController.index
+GET     /screens                    controllers.ScreenController.screen
+GET     /gettingThere               controllers.GettingHereController.index
+GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /placesToGo                 controllers.placesToGoController.viewAll
+GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)

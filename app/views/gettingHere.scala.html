@@ -1,0 +1,38 @@
+@(cinemas: Seq[Cinema])
+@main("Getting Here") {
+    <div>
+        <h1>Getting Here</h1>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        @for(cinema <- cinemas) {
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-@cinema.id-tab" data-bs-toggle="pill" data-bs-target="#pills-@cinema.id" type="button" role="tab" aria-controls="pills-@cinema.id" aria-selected="false">@cinema.name</button>
+            </li>
+        }
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+        @for(cinema <- cinemas) {
+            <div class="tab-pane fade" id="pills-@cinema.id" role="tabpanel" aria-labelledby="pills-@cinema.id-tab">
+                <div class="row">
+                    <img src="assets/@cinema.img_src" width="40%" heigh="40%">
+                </div>
+                <div class="row">
+                    <div class ="col-md">
+                        <p>Cinema Name: @cinema.name</p>
+                    </div>
+                    <div class ="col-md">
+                        <p>Cinema Address: @cinema.address</p>
+                    </div>
+                    <div class ="col-md">
+                        <p>Cinema Directions: @cinema.directions</p>
+                    </div>
+                    <div class ="col-md">
+                        <p>Cinema Parking: @cinema.parking</p>
+                    </div>
+                </div>
+                <iframe src="@cinema.g_location" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+
+        }
+        </div>
+    </div>
+}
