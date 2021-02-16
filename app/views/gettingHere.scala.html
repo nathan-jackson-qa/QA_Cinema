@@ -1,0 +1,25 @@
+@(cinemas: Seq[Cinema])
+@main("Getting Here") {
+    <div>
+        <h1>Getting Here</h1>
+        @for(cinema <- cinemas) {
+            <div class="row">
+                <div class ="col-md">
+                    <p>Cinema Name: @cinema.name</p>
+                </div>
+                <div class ="col-md">
+                    <p>Cinema Address: @cinema.address</p>
+                </div>
+                <div class ="col-md">
+                    <p>Cinema Directions: @cinema.directions</p>
+                </div>
+                <div class ="col-md">
+                    <p>Cinema Parking: @cinema.parking</p>
+                </div>
+                <div class="col-md">
+                    <img src="assets/@cinema.img_src" width="40%" heigh="40%">
+                </div>
+            </div>
+         }
+    </div>
+}
