@@ -1,3 +1,6 @@
+@import helper._
+@import models.Movie
+@(results: Seq[Movie])
 @main("Home") {
 <div class="row">
     <div class="card border-2 border-dark">
@@ -24,36 +27,15 @@
 <br>
 <div class="container">
     <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
+        @for(m <- results) {
+            <div class="col">
+                <div>
+                    <a href="/listingGallery/@m.id">
+                        <img src="assets/@m.img_url" class="movie-poster border border-dark border-2">
+                    </a>
+                </div>
+            </div>
+        }
     </div>
 </div>
 }

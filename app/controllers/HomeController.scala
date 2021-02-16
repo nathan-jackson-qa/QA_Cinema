@@ -1,14 +1,21 @@
 package controllers
 
+import dao.movieDAO
+import models.Movies
 import play.api.mvc._
-
 import javax.inject._
 
-@Singleton
+import play.api.mvc.{AbstractController, Action, ControllerComponents}
+
+import javax.inject.Inject
+import scala.concurrent.ExecutionContext.Implicits.global
+
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-  def index = Action {
-    Ok(views.html.homePage())
+  def viewAll = Action async  {
+    movieDAO.getAllMovies map {
+      results => Ok(views.html.homePage(results))
+    }
   }
 
   def contactPage = Action {
