@@ -1,12 +1,12 @@
 @import helper._
 @import models.Venue
-@(results: Seq[Venue])
+@(results: Seq[Cinema])
 @main("Places To Go") {
 <ul>
+    <h1> Click the cinema for the venues you would like to view</h1>
     @for(x <- results){
-    <li>@x.name</li>
+    <li><a href="/placesToGo/@x.id"/>@x.name, @x.address</li>
     }
 </ul>
-
 
 }
