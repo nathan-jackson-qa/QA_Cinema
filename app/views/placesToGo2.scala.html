@@ -1,0 +1,17 @@
+@import helper._
+@import models.Venue
+@(results: Seq[Venue])
+@main("Places To Go") {
+<ul>
+    @for(x <- results){
+    <li><a href="@x.web_address">@x.name</a></li>
+    <li>@x.address</li>
+    <li>@x.name</li>
+    <li>@x.image</li>
+    <li>@x.offers</li>
+    <li>@x.description</li>
+    </br>
+    }
+</ul>
+
+}
