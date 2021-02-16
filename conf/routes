@@ -4,3 +4,4 @@ GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
 GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /paypal                     controllers.PayPalController.index

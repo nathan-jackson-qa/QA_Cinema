@@ -1,0 +1,35 @@
+@main("PayPal Test"){
+    <script src="https://www.paypal.com/sdk/js?client-id=AWrAtgM5lDpvxw-QS_nX_TD_fOgP5RNKLaV7dARUCoXv6ZxifWoK8X5-mh4Tig8qAEo4Uy73Y19j9Cdc&currency=GBP&disable-funding=credit,card"></script>
+    <div id="paypal-button-container"></div>
+    <script>
+            // Render the PayPal button into #paypal-button-container
+            paypal.Buttons({
+
+                // Set up the transaction
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '88.44'
+                            }
+                        }]
+                    });
+                },
+
+                // Finalize the transaction
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Show a success message to the buyer
+                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    });
+
+
+                },
+                onCancel: function(data){
+                    alert('Transaction was cancelled')
+                }
+
+
+            }).render('#paypal-button-container');
+    </script>
+}
