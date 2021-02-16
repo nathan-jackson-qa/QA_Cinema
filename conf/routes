@@ -3,6 +3,8 @@ GET     /home                       controllers.HomeController.index
 GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
+GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /paypal                     controllers.PayPalController.index
 GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
