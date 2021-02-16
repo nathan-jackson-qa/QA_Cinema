@@ -5,3 +5,4 @@ GET     /classifications            controllers.ClassificationController.classif
 GET     /contact                    controllers.HomeController.contactPage
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /placesToGo                 controllers.placesToGoController.viewAll

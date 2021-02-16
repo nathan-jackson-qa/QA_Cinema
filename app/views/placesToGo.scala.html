@@ -1,0 +1,12 @@
+@import helper._
+@import models.Venue
+@(results: Seq[Venue])
+@main("Places To Go") {
+<ul>
+    @for(x <- results){
+    <li>@x.name</li>
+    }
+</ul>
+
+
+}
