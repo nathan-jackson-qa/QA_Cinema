@@ -4,3 +4,6 @@ GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
 GET     /screens                    controllers.ScreenController.screen
+GET     /gettingThere               controllers.GettingHereController.index
+GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /placesToGo                 controllers.placesToGoController.viewAll
