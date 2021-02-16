@@ -1,12 +1,8 @@
 package controllers
 
-import play.api.i18n.Messages.implicitMessagesProviderToMessages
-
-import javax.inject._
 import play.api.mvc._
 
-import scala.util.{Failure, Success}
-import scala.concurrent.ExecutionContext.Implicits.global
+import javax.inject._
 
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -19,6 +15,4 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.contactPage())
     //Redirect(routes.HomeController.index())
   }
-
-
 }
