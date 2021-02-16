@@ -26,13 +26,14 @@
 </div>
 <br>
 <div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
         @for(m <- results) {
             <div class="col">
-                <div>
+                <div class="card border-dark border-2" style="width: 12rem">
                     <a href="/listingGallery/@m.id">
-                        <img src="assets/@m.img_url" class="movie-poster border border-dark border-2">
+                        <img src="assets/@m.img_url" class="card-img-top movie-poster border-bottom border-2 border-dark" style="height: 15rem">
                     </a>
+                    <h5 class="text-center align-items-center justify-content-center">@m.name</h5>
                 </div>
             </div>
         }

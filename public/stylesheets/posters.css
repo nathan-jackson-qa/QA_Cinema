@@ -1,4 +1,8 @@
-.movie-poster {
-    width: auto;
-    height: 15rem;
+.card {
+    transition: ease-in-out 0.5s;
+}
+
+.card:hover {
+    scale: 1.1;
+    transition: ease-in-out 0.5s;
 }
