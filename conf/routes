@@ -3,4 +3,5 @@ GET     /home                       controllers.HomeController.index
 GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
-GET     /gettingThere                controllers.GettingHereController.index
+GET     /gettingThere               controllers.GettingHereController.index
+GET     /openingTimes               controllers.OpeningTimesController.index
