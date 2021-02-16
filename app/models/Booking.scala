@@ -22,3 +22,4 @@ case class Bookings(tag: Tag) extends Table[Booking](tag, "bookings"){
   def cinema = foreignKey("cinema_id", cinema_id, TableQuery[Cinemas])(_.id, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
   def movie = foreignKey("MovieID", movie_id, TableQuery[Movies])(_.id, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
 }
+case class BookingForm
