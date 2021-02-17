@@ -9,13 +9,17 @@ import play.api.mvc.{AbstractController, Action, ControllerComponents}
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
 
-
-@Singleton
 class GalleryController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def viewAll = Action async  {
     movieDAO.getAllMovies map {
       results => Ok(views.html.whatsOn(results))
+    }
+  }
+
+  def showMovieInfo(id: Int) = Action async {
+    movieDAO.getMovieDetails(id) map {
+      results => Ok(views.html.individualWhatsOn(results))
     }
   }
 }
