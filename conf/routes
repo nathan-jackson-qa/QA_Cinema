@@ -9,6 +9,7 @@ GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
 GET     /listingGallery             controllers.GalleryController.viewAll
+GET     /listingGallery/:id         controllers.GalleryController.showMovieInfo(id: Int)
 GET     /discussions                controllers.DiscussionController.index
 GET     /discussions/form           controllers.DiscussionController.discForm()
 POST    /discussions/entry          controllers.DiscussionController.discFormPost()
