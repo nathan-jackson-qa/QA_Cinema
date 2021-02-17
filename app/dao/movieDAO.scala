@@ -11,8 +11,8 @@ object movieDAO {
   lazy val db: Database = Database.forConfig("mysqlDB")
   lazy val table: TableQuery[Movies] = TableQuery[Movies]
 
-  def getMovieDetails(id: Int): Future[Option[Movie]] = {
-    db.run(table.filter(_.id === id).result.headOption)
+  def getMovieDetails(id: Int): Future[Seq[Movie]] = {
+    db.run(table.filter(t => t.id === id).result)
   }
 
   def getAllMovies: Future[Seq[Movie]] = {

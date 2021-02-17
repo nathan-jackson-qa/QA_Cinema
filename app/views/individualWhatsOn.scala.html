@@ -2,13 +2,13 @@
 @import models.Movie
 @(results: Seq[Movie])
 @main("What's On") {
-@for(m <- results) {
+@for(m <- results){
 <div class="card mb-3 border-0 border-light" style="background-color: #0A0227; color: white">
     <div class="row g-0">
-        <div class="col-md-2 border-end border-4">
-            <img src="assets/@m.img_url" alt="..." style="height: 300px; width: 100%">
+        <div class="col-md-4 border-end border-4">
+            <img src="/assets/@m.img_url" alt="@m.name" style="height: 500px; width: 100%">
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="card-body p-0">
                 <h4 class="card-title border-bottom border-3 border-light p-3 m-0 text-center" style="width: 100%;">@m.name</h4>
                 <h5 class="p-2 pb-0 m-0">Description</h5>
@@ -20,11 +20,11 @@
                 <h5 class="p-2 pb-0 m-0">Age Rating</h5>
                 <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@m.classification</h6>
 
-                <a class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" href="/listingGallery/@m.id" role="button">View Movie</a>
+                <a class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" href="/ticketBooking" role="button">Book a Ticket</a>
             </div>
         </div>
     </div>
 </div>
-<br>
+
 }
 }
