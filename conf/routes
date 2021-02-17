@@ -8,7 +8,7 @@ GET     /paypal                     controllers.PayPalController.index
 GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
-GET     /listingGallery             controllers.GalleryController.index
+GET     /listingGallery             controllers.GalleryController.viewAll
 GET     /discussions                controllers.DiscussionController.index
 GET     /placesToGo                 controllers.placesToGoController.viewAll
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
