@@ -1,9 +1,10 @@
 package controllers
 
-import dao.bookingDAO
+import dao.{bookingDAO, cinemaDAO, movieDAO}
 import models.bookingForm
 import play.api.mvc._
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import javax.inject.{Inject, Singleton}
 
 @Singleton
@@ -21,4 +22,17 @@ class BookingController @Inject()(cc: ControllerComponents) extends AbstractCont
         Redirect(routes.PayPalController.index())
     })
   }
+
+  def cinemaAll = Action async {
+    cinemaDAO.getAllCinemas map {
+      results => Ok(views.html.cinemaBooking(results))
+    }
+  }
+
+//  def movieAll = Action async {
+//    movieDAO.getAllMovies map {
+//      results => Ok("woo" ))
+//    }
+//  }
+
 }
