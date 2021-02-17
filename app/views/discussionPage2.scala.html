@@ -12,9 +12,9 @@
     We also try to improve our services and venues as much as possible and so we would appreciate any feedback you have about a
     recent experience you have had in our one of our venues.</p>
     <br>
-    @form(action = routes.DiscussionController.discForm()) {
+    @form(action = routes.DiscussionController.discFormPost()) {
         @inputText(discussionForm("id"))
-        @inputText(discussionForm("Movie name"))
+        @inputText(discussionForm("title"))
         @inputText(discussionForm("description"))
         @inputText(discussionForm("rating"))
         <input type="submit" value="Submit">

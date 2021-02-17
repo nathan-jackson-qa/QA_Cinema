@@ -1,12 +1,12 @@
 package dao
 
 import models.{Discussion, Discussions}
-import slick.lifted.TableQuery
-import slick.jdbc.MySQLProfile.backend.Database
 import slick.jdbc.MySQLProfile.api._
+import slick.jdbc.MySQLProfile.backend.Database
+import slick.lifted.TableQuery
 
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 object discussionDAO {
   lazy val db: Database = Database.forConfig("mysqlDB")

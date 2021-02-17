@@ -1,7 +1,7 @@
 package controllers
 
 import dao.discussionDAO
-import models.{Discussion, discussionForm}
+import models.discussionForm
 import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
 
 import javax.inject.{Inject, Singleton}
