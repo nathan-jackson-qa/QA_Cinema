@@ -1,43 +1,28 @@
-
+@import helper._
+@import models.Discussion
+@(result: Seq[Discussion])
 @main("Discussion"){
     <div class="text-center">
-        <h1> Welcome to our discussion board movie lovers! </h1>
+        <h1> Leave a review on a movie or one of our premises! </h1>
     </div>
     <br>
-    <p>Here at QA we value the opinion of our customers just as much as the movie critics and so we give you the chance to comment
-    on your favourite films and give them ratings to help our other potential customers choose what they think is the best choice for them.
-    We also try to improve our services and venues as much as possible and so we would appreciate any feedback you have about a
-    recent experience you have had in our one of our venues.</p>
-    <br>
-    <h2>Customer Feedback</h2>
-    <div class="row">
-        <form action="localhost:9000/discussion/board">
-            <label for="name">Venue name:</label>
-            <input type="text" id="name" vname="name">
-            <br></br>
-            <label for="review"> Service feedback:</label>
-            <br>
-            <textarea id="review" name="cinemareview" rows="8" cols="75"></textarea>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
+    <div>
+    <a class="btn btn-primary" href="discussions/form">Press here to add a review</a>
     </div>
     <br>
-    <h2>Movie Feedback</h2>
+    <h2>Reviews</h2>
     <br>
-    <div class="row">
-        <form action="localhost:9000/discussion">
-            <label for="title">Movie title:</label>
-            <input type="text" id="name" mname="name">
-            <br></br>
-            <label for="title">Rating:</label>
-            <input type="number" min="0" max="10" id="name" mname="name"> /10
-            <br></br>
-            <label for="review"> Review of movie:</label>
+    <ul>
+        @for(i <- result){
+            User number: @i.id
             <br>
-            <textarea id="review" name="cinemareview" rows="8" cols="75"></textarea>
+            Movie title: @i.title
             <br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+            Review of movie and cinema: @i.description
+            <br>
+            Rating: @i.rating/10
+            <br><br><br>
+        }
+    </ul>
+    <br>
 }

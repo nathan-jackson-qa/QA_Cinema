@@ -1,0 +1,22 @@
+@import helper._
+@import models.discussionForm
+
+@(discussionForm: Form[Discussion])(implicit messages: Messages)
+@main("Discussions"){
+    <div class="text-center">
+        <h1> Welcome to our discussion board movie lovers! </h1>
+    </div>
+    <br>
+    <p>Here at QA we value the opinion of our customers just as much as the movie critics and so we give you the chance to comment
+    on your favourite films and give them ratings to help our other potential customers choose what they think is the best choice for them.
+    We also try to improve our services and venues as much as possible and so we would appreciate any feedback you have about a
+    recent experience you have had in our one of our venues.</p>
+    <br>
+    @form(action = routes.DiscussionController.discFormPost()) {
+        @inputText(discussionForm("id"))
+        @inputText(discussionForm("title"))
+        @inputText(discussionForm("description"))
+        @inputText(discussionForm("rating"))
+        <input type="submit" value="Submit">
+    }
+}

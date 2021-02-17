@@ -4,7 +4,8 @@
 @form(action = routes.BookingController.inputBooking()){
 @inputText(bookingForm("id"))
 @inputText(bookingForm("name_of_person"))
-@inputText(bookingForm("dateTime"))
+@inputText(bookingForm("date"))
+@inputText(bookingForm("time"))
 @inputText(bookingForm("numOfAdult"))
 @inputText(bookingForm("numOfChild"))
 @inputText(bookingForm("deluxe"))
