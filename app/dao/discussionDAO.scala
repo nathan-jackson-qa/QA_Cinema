@@ -17,4 +17,7 @@ object discussionDAO {
       case ex: Exception => ex.getCause.getMessage
     }
   }
+  def getReviews: Future[Seq[Discussion]] = {
+    db.run(table.result)
+  }
 }

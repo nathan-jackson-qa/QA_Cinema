@@ -1,3 +1,6 @@
+@import helper._
+@import models.Discussion
+@(result: Seq[Discussion])
 @main("Discussion"){
     <div class="text-center">
         <h1> Leave a review on a movie or one of our premises! </h1>
@@ -8,4 +11,18 @@
     </div>
     <br>
     <h2>Reviews</h2>
+    <br>
+    <ul>
+        @for(i <- result){
+            User number: @i.id
+            <br>
+            Movie title: @i.title
+            <br>
+            Review of movie and cinema: @i.description
+            <br>
+            Rating: @i.rating/10
+            <br><br><br>
+        }
+    </ul>
+    <br>
 }
