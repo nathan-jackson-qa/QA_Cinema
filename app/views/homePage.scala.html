@@ -1,9 +1,12 @@
+@import helper._
+@import models.Movie
+@(results: Seq[Movie])
 @main("Home") {
 <div class="row">
-    <div class="card border-2 border-dark">
+    <div class="card border-2 border-dark" style="background-color: #333B84">
         <div class="card-body text-center">
-            <h1 class="card-title">QA Cinemas</h1>
-            <p class="card-text">
+            <h1 class="card-title" style="color: white">QA Cinemas</h1>
+            <p class="card-text" style="color: #C4B2BC">
                 Here at QA Cinemas, we strive to provide the best possible movie going experience that there is to offer, at an extortionate price. With world class projector
                 operators and staff that always have a mile on their face, you'll never choose another cinema branch again.
             </p>
@@ -14,46 +17,26 @@
 <div class="row">
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-        <input type="radio" class="btn-check" name="btnradio" id="gallery" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="btnradio" id="gallery" autocomplete="off" style="background-color: #8e95d3" checked>
         <label class="btn btn-outline-primary" for="gallery">Current Movies</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="new-gallery" autocomplete="off">
+        <input type="radio" class="btn-check" name="btnradio" id="new-gallery" autocomplete="off" style="background-color: #8e95d3">
         <label class="btn btn-outline-primary" for="new-gallery">New Movies</label>
     </div>
 </div>
 <br>
 <div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
-        <div class="col">
-            <div class="p-3 border bg-light">Row column</div>
-        </div>
+    <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+        @for(m <- results) {
+            <div class="col">
+                <div class="card border-0" style="width: 12rem; background-color: #050113; color: white">
+                    <a href="/listingGallery/@m.id">
+                        <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
+                    </a>
+                    <h5 class="text-center align-items-center justify-content-center p-1 m-0">@m.name</h5>
+                </div>
+            </div>
+        }
     </div>
 </div>
 }

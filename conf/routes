@@ -1,5 +1,5 @@
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-GET     /home                       controllers.HomeController.index
+GET     /home                       controllers.HomeController.viewAll
 GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
@@ -8,8 +8,9 @@ GET     /paypal                     controllers.PayPalController.index
 GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
-GET     /placesToGo                 controllers.placesToGoController.viewAll
+GET     /listingGallery             controllers.GalleryController.viewAll
 GET     /discussions                controllers.DiscussionController.index
+GET     /placesToGo                 controllers.placesToGoController.viewAll
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
 GET     /ticketBooking              controllers.BookingController.form
 POST    /Booking                    controllers.BookingController.inputBooking()
