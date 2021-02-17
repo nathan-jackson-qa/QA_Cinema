@@ -19,5 +19,6 @@ class placesToGoController @Inject()(cc: ControllerComponents) extends AbstractC
     venuesDAO.getAllVenuesById(id) map {
       selectedResults => Ok(views.html.placesToGo2(selectedResults))
     }
+
   }
 }
