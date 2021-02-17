@@ -1,5 +1,6 @@
 @import helper._
-@(bookingForm: Form[Booking])(implicit messages: Messages)
+@import models.Cinema
+@(bookingForm: Form[Booking], cinemas: Seq[Cinema])(implicit messages: Messages)
 @main("Ticket Booking") {
 @form(action = routes.BookingController.inputBooking()){
 @inputText(bookingForm("id"))
@@ -12,8 +13,7 @@
 @inputText(bookingForm("concessions"))
 @inputText(bookingForm("total"))
 @inputText(bookingForm("movie_id"))
-@inputText(bookingForm("cinema_id"))
+@select(field=bookingForm("cinema_id"), options=cinemas.map(cinema => cinema.id.toString -> cinema.name))
 <input type="submit" value="Submit">
 }
-@routes.BookingController.cinemaAll
 }

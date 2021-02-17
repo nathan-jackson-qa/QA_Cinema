@@ -16,4 +16,3 @@ GET     /placesToGo                 controllers.placesToGoController.viewAll
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
 GET     /ticketBooking              controllers.BookingController.form
 POST    /Booking                    controllers.BookingController.inputBooking()
-GET     /cinemaAll                  controllers.BookingController.cinemaAll()

@@ -1,8 +1,0 @@
-@import helper._
-@import models.Cinema
-@(results: Seq[Cinema])
-<select>
-    @for(x <- results){
-        <option>@x.name</option>
-    }
-</select>
