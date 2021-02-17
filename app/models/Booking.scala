@@ -24,7 +24,7 @@ case class Bookings(tag: Tag) extends Table[Booking](tag, "bookings") {
 
   def concessions = column[Boolean]("concessions")
 
-  def total = column[Int]("concessions")
+  def total = column[Int]("total")
 
   def movie_id = column[Int]("movie_id")
 
