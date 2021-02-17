@@ -1,0 +1,17 @@
+@import helper._
+@(bookingForm: Form[Booking])(implicit messages: Messages)
+@main("Ticket Booking") {
+@form(action = routes.BookingController.inputBooking()){
+@inputText(bookingForm("id"))
+@inputText(bookingForm("name_of_person"))
+@inputText(bookingForm("dateTime"))
+@inputText(bookingForm("numOfAdult"))
+@inputText(bookingForm("numOfChild"))
+@inputText(bookingForm("deluxe"))
+@inputText(bookingForm("concessions"))
+@inputText(bookingForm("total"))
+@inputText(bookingForm("movie_id"))
+@inputText(bookingForm("cinema_id"))
+<input type="submit" value="Submit">
+}
+}
