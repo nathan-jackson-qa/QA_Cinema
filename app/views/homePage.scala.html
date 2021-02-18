@@ -3,7 +3,7 @@
 @(results: Seq[Movie])
 @main("Home") {
 <div class="row">
-    <div class="card border-0" style="background-color: #0A0227">
+    <div class="card border-1 border-light" style="background-color: #0A0227">
         <div class="card-body text-center">
             <h1 class="card-title" style="color: white">QA Cinemas</h1>
             <p class="card-text" style="color: #C4B2BC">
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<br>
+<br><br>
 <div class="row">
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
@@ -24,19 +24,20 @@
         <label class="btn btn-outline-primary" for="new-gallery">New Movies</label>
     </div>
 </div>
-<br>
+<br><br>
 <div class="container">
-    <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+    <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5">
         @for(m <- results) {
             <div class="col">
-                <div class="card border-0" style="width: 12rem; background-color: #050113; color: white">
-                    <a href="/listingGallery/@m.id">
-                        <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
-                    </a>
-                    <h5 class="text-center align-items-center justify-content-center p-1 m-0">@m.name</h5>
-                </div>
+                <a class="hover-scale" href="/listingGallery/@m.id">
+                    <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem; background-color: #050113; color: white">
+                            <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
+                        <h5 class="user-select-none text-center align-items-center justify-content-center p-1 m-0 border-rounded" style="background: #333B84">@m.name</h5>
+                    </div>
+                </a>
             </div>
         }
     </div>
 </div>
+<br>
 }
