@@ -13,10 +13,10 @@
     recent experience you have had in our one of our venues.</p>
     <br>
     @form(action = routes.DiscussionController.discFormPost()) {
-        @inputText(discussionForm("id"))
-        @inputText(discussionForm("title"))
-        @inputText(discussionForm("description"))
-        @inputText(discussionForm("rating"))
+        @inputText(discussionForm("id").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
+        @inputText(discussionForm("title"), '_showConstraints -> false)
+        @textarea(field = discussionForm("description"), args = 'rows -> 6, 'cols -> 68)
+        @inputText(discussionForm("rating"),'min -> 0, 'max -> 10, '_showConstraints -> false)
         <input type="submit" value="Submit">
     }
 }
