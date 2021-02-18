@@ -31,12 +31,12 @@ class BookingController @Inject()(cc: ControllerComponents) extends AbstractCont
     if(b.deluxe){
       val adultPrice = 12.49
       val childPrice = 8.49
-      total = (b.numOfAdult * adultPrice) + (b.numOfChild * childPrice)
+      total = (b.numOfAdult * adultPrice) + (b.numOfChild * childPrice) + b.concessions
     }
     else{
       val adultPrice = 9.49
       val childPrice = 6.49
-      total = (b.numOfAdult * adultPrice) + (b.numOfChild * childPrice)
+      total = (b.numOfAdult * adultPrice) + (b.numOfChild * childPrice) + b.concessions
     }
 
     Booking(b.id, b.name_of_person, b.date, b.time, b.numOfAdult, b.numOfChild, b.deluxe, b.concessions, total, b.movie_id, b.cinema_id)
