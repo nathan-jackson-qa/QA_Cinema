@@ -18,4 +18,5 @@ object movieDAO {
   def getAllMovies: Future[Seq[Movie]] = {
     db.run(table.result)
   }
+
 }
