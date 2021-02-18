@@ -16,5 +16,6 @@ object bookingDAO {
       case ex: Exception => ex.getCause.getMessage
     }
   }
+
 }
 
