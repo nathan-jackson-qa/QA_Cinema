@@ -17,10 +17,10 @@
 <div class="row">
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-        <input type="radio" class="btn-check" name="btnradio" id="gallery" autocomplete="off" style="background-color: #8e95d3" checked>
+        <input type="radio" onClick="window.location ='@routes.HomeController.viewTen'" class="btn-check" name="btnradio" id="gallery" autocomplete="off" style="background-color: #8e95d3">
         <label class="btn btn-outline-primary" for="gallery">Current Movies</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="new-gallery" autocomplete="off" style="background-color: #8e95d3">
+        <input type="radio" onClick="window.location ='@routes.HomeController.viewAllUpcoming'; document.getElementById('new-gallery').checked = true;" class="btn-check" name="btnradio" id="new-gallery" autocomplete="off" style="background-color: #8e95d3">
         <label class="btn btn-outline-primary" for="new-gallery">New Movies</label>
     </div>
 </div>
