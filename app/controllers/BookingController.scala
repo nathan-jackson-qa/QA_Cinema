@@ -10,16 +10,16 @@ import javax.inject.{Inject, Singleton}
 @Singleton
 class BookingController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport{
 
-  def form() = Action.async{
+  def form(id: Int) = Action.async{
     implicit request: Request[AnyContent] =>
       cinemaDAO.getAllCinemas.map{
-        results => Ok(views.html.ticketBooking(bookingForm.form, results))
+        results => Ok(views.html.ticketBooking(bookingForm.form, results, id))
       }
   }
 
   def inputBooking() = Action { implicit request: Request[AnyContent] =>
     println(bookingForm.form.bindFromRequest().get)
-    bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema]()))},
+    bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema](),0))},
       { widget => bookingDAO.add(widget)
         Redirect(routes.PayPalController.index())
     })
