@@ -4,7 +4,7 @@ GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
 GET     /openingTimes               controllers.OpeningTimesController.index
-GET     /paypal                     controllers.PayPalController.index
+#GET     /paypal                     controllers.PayPalController.index
 GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
@@ -15,5 +15,5 @@ GET     /discussions/form           controllers.DiscussionController.discForm()
 POST    /discussions/entry          controllers.DiscussionController.discFormPost()
 GET     /placesToGo                 controllers.placesToGoController.viewAll
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
-GET     /ticketBooking              controllers.BookingController.form
+GET     /ticketBooking/:id          controllers.BookingController.form(id: Int)
 POST    /Booking                    controllers.BookingController.inputBooking()
