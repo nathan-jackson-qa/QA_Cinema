@@ -20,8 +20,7 @@ class BookingController @Inject()(cc: ControllerComponents) extends AbstractCont
   def inputBooking() = Action { implicit request: Request[AnyContent] =>
     bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema](),0))},
       { widget => bookingDAO.add(widget)
-        Redirect(routes.PayPalController.index())
+        Ok(views.html.testPayPal(widget))
     })
   }
-
 }
