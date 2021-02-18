@@ -18,6 +18,7 @@ class BookingController @Inject()(cc: ControllerComponents) extends AbstractCont
   }
 
   def inputBooking() = Action { implicit request: Request[AnyContent] =>
+
     bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema](), 0)) },
       { widget =>
         val x = getPrice(widget)
