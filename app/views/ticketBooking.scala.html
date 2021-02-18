@@ -4,16 +4,16 @@
 @main("Ticket Booking") {
 @form(action = routes.BookingController.inputBooking()){
 @inputText(bookingForm("id").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
-@inputText(bookingForm("name_of_person"), '_showConstraints -> false)
-@inputText(bookingForm("date"), '_showConstraints -> false)
-@inputText(bookingForm("time"), '_showConstraints -> false)
-@inputText(bookingForm("numOfAdult"), '_showConstraints -> false)
-@inputText(bookingForm("numOfChild"), '_showConstraints -> false)
-@inputText(bookingForm("deluxe"), '_showConstraints -> false)
-@inputText(bookingForm("concessions"), '_showConstraints -> false)
-@inputText(bookingForm("total"), '_showConstraints -> false)
-@inputText(bookingForm("movie_id").copy(value=Some(id.toString)), 'readonly -> "readonly", '_showConstraints -> false)
-@select(field=bookingForm("cinema_id"), options=cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false)
+@inputText(bookingForm("name_of_person"), '_showConstraints -> false, '_label -> "Name")
+@inputText(bookingForm("date"), '_showConstraints -> false, '_label -> "Date")
+@inputText(bookingForm("time"), '_showConstraints -> false , '_label -> "Time")
+@inputText(bookingForm("numOfAdult"), '_showConstraints -> false, '_label -> "Number of Adult Tickets")
+@inputText(bookingForm("numOfChild"), '_showConstraints -> false, '_label -> "Number of Child Tickets")
+@inputText(bookingForm("deluxe"), '_showConstraints -> false, '_label -> "Would you like deluxe seating?")
+@inputText(bookingForm("concessions"), '_showConstraints -> false, '_label -> "Concessions")
+@inputText(bookingForm("total"), '_showConstraints -> false, '_label -> "Total Price:")
+@inputText(bookingForm("movie_id").copy(value=Some(id.toString)), 'readonly -> "readonly", '_showConstraints -> false, '_label -> "Movie ID")
+@select(field=bookingForm("cinema_id"), options=cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false, '_label -> "Cinema")
 <input type="submit" value="Submit">
 }
 }
