@@ -43,3 +43,15 @@ background: radial-gradient(circle, rgba(19,4,74,1) 0%, rgba(5,1,19,1) 100%);
     scale: 1.1;
     transition: ease-in-out 0.5s;
 }
+
+.whatsOn-card {
+    box-shadow: 0px 0px 30px 5px black;
+}
+
+.custom-border-end {
+    border-right: 5px solid #333B84;
+}
+
+.custom-border-bottom {
+    border-bottom: 6px solid #333B84;
+}
