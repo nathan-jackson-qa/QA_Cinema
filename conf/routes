@@ -4,16 +4,15 @@ GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.HomeController.contactPage
 GET     /openingTimes               controllers.OpeningTimesController.index
-#GET     /paypal                     controllers.PayPalController.index
 GET     /screens                    controllers.ScreenController.screen
 GET     /gettingThere               controllers.GettingHereController.index
 GET     /openingTimes               controllers.OpeningTimesController.index
 GET     /listingGallery             controllers.GalleryController.viewAll
 GET     /listingGallery/:id         controllers.GalleryController.showMovieInfo(id: Int)
-GET     /discussions                controllers.DiscussionController.index
+GET     /discussions                controllers.DiscussionController.index()
 GET     /discussions/form           controllers.DiscussionController.discForm()
 POST    /discussions/entry          controllers.DiscussionController.discFormPost()
-GET     /placesToGo                 controllers.placesToGoController.viewAll
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
 GET     /ticketBooking/:id          controllers.BookingController.form(id: Int)
 POST    /Booking                    controllers.BookingController.inputBooking()
+GET     /Search                     controllers.HomeController.search(search)
