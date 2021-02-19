@@ -8,16 +8,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class placesToGoController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
-  def viewAll = Action async {
-    cinemaDAO.getAllCinemas map {
-      results => Ok(views.html.placesToGo(results))
-    }
-  }
-
   def showCinemaVenue(id: Int) = Action async {
     venuesDAO.getAllVenuesById(id) map {
       selectedResults => Ok(views.html.placesToGo2(selectedResults))
     }
-
   }
 }
