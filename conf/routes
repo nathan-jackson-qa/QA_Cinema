@@ -15,4 +15,4 @@ POST    /discussions/entry          controllers.DiscussionController.discFormPos
 GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
 GET     /ticketBooking/:id          controllers.BookingController.form(id: Int)
 POST    /Booking                    controllers.BookingController.inputBooking()
-GET     /Search/:search             controllers.HomeController.search(search: String)
+GET     /Search                     controllers.HomeController.search(search)
