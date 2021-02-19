@@ -20,3 +20,4 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
   "mysql" % "mysql-connector-java" % "8.0.23"
 )
+libraryDependencies += "com.github.daddykotex" %% "courier" % "3.0.0-M2a"
