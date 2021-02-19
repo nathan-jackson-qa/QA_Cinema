@@ -30,6 +30,7 @@ object movieDAO {
     } yield (m, a)
     db.run(actorsMovies.result)
   }
+
   def getReleasedMovies: Future[Seq[Movie]] = {
     db.run(movies.filter(t => t.isReleased === true).take(10).result)
   }

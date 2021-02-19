@@ -23,15 +23,15 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     //Redirect(routes.HomeController.index())
   }
 
-  def viewTen = Action async  {
-    movieDAO.getReleasedMovies map {
-      results => Ok(views.html.homePage(results))
-    }
-  }
-
-  def viewAllUpcoming = Action async  {
-    movieDAO.getUpcomingMovies map {
-      results => Ok(views.html.homePage(results))
-    }
-  }
+//  def viewTen = Action async  {
+//    movieDAO.getReleasedMovies map {
+//      results => Ok(views.html.homePage(results))
+//    }
+//  }
+//
+//  def viewAllUpcoming = Action async  {
+//    movieDAO.getUpcomingMovies map {
+//      results => Ok(views.html.homePage(results))
+//    }
+//  }
 }
