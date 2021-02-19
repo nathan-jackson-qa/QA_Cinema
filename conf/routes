@@ -1,5 +1,6 @@
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET     /home                       controllers.HomeController.viewAll
+#GET     /home2                      controllers.HomeController.viewAllUpcoming
 GET     /about                      controllers.AboutController.index
 GET     /classifications            controllers.ClassificationController.classification
 GET     /contact                    controllers.ContactController.contactPage
