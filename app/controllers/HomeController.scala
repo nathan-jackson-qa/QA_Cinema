@@ -19,14 +19,21 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     }
   }
 
-  def contactPage = Action {
-    Ok(views.html.contactPage())
-    //Redirect(routes.HomeController.index())
-  }
-
   def search(keyword: String) = Action async {
     movieDAO.searchBykeyword(keyword) map {
       results => Ok(views.html.searchResults(results))
     }
   }
+
+//  def viewTen = Action async  {
+//    movieDAO.getReleasedMovies map {
+//      results => Ok(views.html.homePage(results))
+//    }
+//  }
+//
+//  def viewAllUpcoming = Action async  {
+//    movieDAO.getUpcomingMovies map {
+//      results => Ok(views.html.homePage(results))
+//    }
+//  }
 }

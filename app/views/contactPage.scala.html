@@ -4,15 +4,17 @@
 <!-- Contact form -->
 <h1>Contact Us</h1>
 
-<form action="mailto:chetan.pardeep96@@gmail.com" method="post" enctype="text/plain">
-    Name:<br>
-    <input type="text" name="name"><br>
-    E-mail:<br>
-    <input type="text" name="mail"><br>
-    Message:<br>
-    <input type="text" name="comment" size="50"><br><br>
-    <input type="submit" value="Send">
-    <input type="reset" value="Reset">
+<form action="/contactSend" method="get">
+        Name:<br>
+        <input type="text" name="name"><br>
+        E-mail:<br>
+        <input type="text" name="userName"> @@ <input type="text" name="domainName"><br>
+        Subject:<br>
+        <input type="text" name="subject"><br>
+        Message:<br>
+        <input type="text" name="message" size="50"><br><br>
+        <input type="submit" value="Send">
+        <input type="reset" value="Reset">
 </form>
 
 <!-- Location address -->

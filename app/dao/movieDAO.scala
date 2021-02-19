@@ -1,5 +1,6 @@
 package dao
 
+import dao.venuesDAO.{db, table}
 import models.{Actor, Actors, Movie, Movie_Actors, Movies}
 import slick.jdbc.MySQLProfile.backend.Database
 import slick.jdbc.MySQLProfile.api._
@@ -28,7 +29,14 @@ object movieDAO {
       a <- actors if am.actorID === a.id
     } yield (m, a)
     db.run(actorsMovies.result)
+  }
 
+  def getReleasedMovies: Future[Seq[Movie]] = {
+    db.run(movies.filter(t => t.isReleased === true).take(10).result)
+  }
+
+  def getUpcomingMovies: Future[Seq[Movie]] = {
+    db.run(movies.filter(t => t.isReleased === false).result)
   }
 
   def searchBykeyword(keyword: String): Future[Seq[Movie]] = {
