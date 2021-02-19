@@ -1,8 +1,6 @@
 @import helper._
 @import models.Movie
 @import scala.Predef
-
-
 @(results: Seq[Movie])
 @main("Home") {
     <div class="row">
@@ -32,8 +30,8 @@
     <br>
     <div class="container">
         <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5" id="released">
-        @for(m <- results) {
-            @if(m.isReleased) {
+        @for(m <- results.toList.filter(_.isReleased == true).take(10)) {
+
                 <div class="col">
                     <a class="hover-scale" href="/listingGallery/@m.id">
                         <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
@@ -44,13 +42,12 @@
                         </div>
                     </a>
                 </div>
-            }
         }
         </div>
 
         <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5 hidden" id="notReleased">
-        @for(m <- results) {
-            @if(!m.isReleased) {
+        @for(m <- results.toList.filter(_.isReleased == false).take(10)) {
+
                 <div class="col">
                 <a class="hover-scale" href="/listingGallery/@m.id">
                     <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
@@ -61,7 +58,7 @@
                     </div>
                 </a>
             </div>
-            }
+
         }
        </div>
     </div>
@@ -80,3 +77,4 @@
             }
         }
 </script>
+
