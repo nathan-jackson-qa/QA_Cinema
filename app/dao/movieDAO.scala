@@ -31,4 +31,7 @@ object movieDAO {
 
   }
 
+  def searchBykeyword(keyword: String): Future[Seq[Movie]] = {
+    db.run(movies.filter(t =>(t.name like s"%$keyword%") || (t.director like s"%$keyword%") || (t.desc like s"%$keyword%") || (t.classification like s"%$keyword%")).result)
+  }
 }
