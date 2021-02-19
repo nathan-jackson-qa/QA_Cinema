@@ -11,50 +11,49 @@
     </head>
     <body class="website-BG">
     <nav class="navbar navbar-expand-lg navbar-light user-select-none border-bottom border-1 border-light" style="background-color: #0A0227">
-        <a class="navbar-brand" href="#">
-            <img src="@routes.Assets.versioned("images/QA-Cinema-Logo-WIP.png")" width="50" height="50" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/listingGallery">What's On</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/openingTimes">Opening Times</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/screens">Screens</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/gettingThere">Getting Here</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/classifications">Classifications</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/discussions">Discussions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact Us</a>
-                </li>
-
-                <li>
-                    <form class="form-inline my-2 my-lg-0" action="/Search" method="get">
-                        <input id="search" name="search" class="form-control mr-sm-2" type="search" placeholder="Search Term" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="@routes.Assets.versioned("images/QA-Cinema-Logo-WIP.png")" width="50" height="50" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listingGallery">What's On</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/openingTimes">Opening Times</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/screens">Screens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gettingThere">Getting Here</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/classifications">Classifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/discussions">Discussions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact Us</a>
+                    </li>
+                    <form class="d-flex position-absolute end-0 me-3" action="/Search" method="get">
+                        <input id="search" name="search"  class="form-control me-2" type="search" placeholder="Search Term" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
                     </form>
-                </li>
-            </ul>
-        </div>
+                </ul>
+                </div>
+            </div>
     </nav>
     <br>
     <div class="container" >
@@ -63,19 +62,19 @@
         <br>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>    </body>
-    <footer style="background-color: #050113">
+    <footer class="footer mt-auto py-3" style="background-color: #050113">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h4 style="color: white" class="text-end">About us</h4>
+                    <h5 style="color: white" class="text-end">About us</h5>
                     <a href="/aboutPage" target="_blank">
-                        <h5 class="text-decoration-none text-end">The Team</h5>
+                        <h6 class="text-decoration-none text-end me-2">The Team</h6>
                     </a>
                 </div>
                 <div class="col">
-                    <h4 style="color: white" class="text=start">Contact Us<h4>
+                    <h5 style="color: white" class="text=start">Contact Us<h5>
                     <a href="/contactPage" target="_blank">
-                        Get in touch
+                        <h6 class="text-decoration-none ms-1">Get in touch</h6>
                     </a>
                 </div>
             </div>
