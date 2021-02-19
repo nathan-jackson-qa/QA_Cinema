@@ -56,7 +56,7 @@ background: radial-gradient(circle, rgba(19,4,74,1) 0%, rgba(5,1,19,1) 100%);
 }
 
 footer {
-    height: 75px;
+    height: 50px;
     position: fixed;
     bottom: 0;
     width: 100%;

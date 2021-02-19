@@ -1,7 +1,16 @@
 @(cinemas: Seq[Cinema])
 @main("Getting Here") {
-    <div>
+<div class="row">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        @for(cinema <- cinemas) {
+        <input type="radio" onclick="show()" class="btn-check" name="btnradio" id="@cinema.id-tab" autocomplete="off" style="background-color: #8e95d3">
+        <label class="btn btn-outline-primary" for="@cinema.id-tab">@cinema.name</label>
+        }
+    </div>
+</div>
+
         <h1>Getting Here</h1>
+
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         @for(cinema <- cinemas) {
             <li class="nav-item" role="presentation">
@@ -38,5 +47,4 @@
 
         }
         </div>
-    </div>
 }
