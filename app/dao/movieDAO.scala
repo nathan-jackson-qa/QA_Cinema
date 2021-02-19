@@ -14,20 +14,20 @@ object movieDAO {
   lazy val moviesActors: TableQuery[Movie_Actors] = TableQuery[Movie_Actors]
   lazy val actors: TableQuery[Actors] = TableQuery[Actors]
 
-  def getMovieDetails(id: Int): Future[Seq[Movie]] = {
-    db.run(movies.filter(t => t.id === id).result)
+  def getMovieDetails(id: Int): Future[Option[Movie]] = {
+    db.run(movies.filter(t => t.id === id).result.headOption)
   }
 
   def getAllMovies: Future[Seq[Movie]] = {
     db.run(movies.result)
   }
 
-  def getMovieActors: Future[Any] = {
+  def getMovieActors(id: Int): Future[Seq[Actor]] = {
     val actorsMovies = for {
-      m  <- movies
+      m  <- movies if m.id === id
       am <- moviesActors if m.id === am.movieID
       a <- actors if am.actorID === a.id
-    } yield (m, a)
+    } yield (a)
     db.run(actorsMovies.result)
   }
 

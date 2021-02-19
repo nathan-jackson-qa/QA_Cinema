@@ -1,6 +1,7 @@
 package controllers
 
 import dao.movieDAO
+import models.Movie
 import play.api.mvc._
 
 import javax.inject._
@@ -18,8 +19,12 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
   }
 
   def showMovieInfo(id: Int) = Action async {
-    movieDAO.getMovieDetails(id) map {
-      results => Ok(views.html.individualWhatsOn(results))
+    movieDAO.getMovieActors(id).flatMap { actors =>
+      movieDAO.getMovieDetails(id).map {
+        case Some(movie: Movie) => Ok(views.html.individualWhatsOn(actors, movie))
+        case None => Ok(views.html.contactPage())
+      }
+
     }
   }
 }
