@@ -6,11 +6,12 @@ import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import views.html.helper.form
 
-case class Discussion(id: Int, title: String, description: String, rating: Int) {
+case class Discussion(id: Int, title: String, description: String, rating: Int, onApproved: Boolean) {
   def getId() = id
   def getTitle() = title
   def getDescription() = description
   def getRating() = rating
+  def getApproved() = onApproved
 }
 
 case class Discussions(tag: Tag) extends Table[Discussion](tag, "discussion"){
@@ -22,7 +23,9 @@ case class Discussions(tag: Tag) extends Table[Discussion](tag, "discussion"){
 
   def rating = column[Int]("Rating")
 
-  def * = (id, title, description, rating) <> (Discussion.tupled, Discussion.unapply)
+  def onApproved = column[Boolean]("onApproved")
+
+  def * = (id, title, description, rating, onApproved) <> (Discussion.tupled, Discussion.unapply)
 }
 
 object discussionForm {
@@ -31,7 +34,8 @@ object discussionForm {
       "id" -> number,
       "title" -> text,
       "description" -> text,
-      "rating" -> number.verifying(min(0), max(10))
+      "rating" -> number.verifying(min(0), max(10)),
+      "onApproved" -> boolean
     )(Discussion.apply)(Discussion.unapply)
   )
 }

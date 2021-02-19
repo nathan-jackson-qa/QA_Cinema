@@ -26,6 +26,11 @@ class DiscussionController @Inject()(cc: ControllerComponents) extends AbstractC
         Redirect(routes.DiscussionController.index())}
     )
   }
+  def index2() = Action async {
+    discussionDAO.getReviews map {
+      results => Ok(views.html.admin(results))
+    }
+  }
 
 }
 
