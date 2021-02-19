@@ -1,5 +1,8 @@
 @import helper._
 @import models.Movie
+@import scala.Predef
+
+
 @(results: Seq[Movie])
 @main("Home") {
     <div class="row">
@@ -18,7 +21,7 @@
     <div class="row">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-            <input type="radio" onclick="show()" class="btn-check" name="btnradio" id="gallery" autocomplete="off" style="background-color: #8e95d3">
+            <input type="radio" onclick="show()" class="btn-check" name="btnradio" id="gallery" autocomplete="off" style="background-color: #8e95d3" checked>
             <label class="btn btn-outline-primary" for="gallery">Current Movies</label>
 
             <input type="radio" onclick="show()" class="btn-check" name="btnradio" id="new-gallery" autocomplete="off" style="background-color: #8e95d3">
@@ -45,10 +48,10 @@
         }
         </div>
 
-        <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5" id="notReleased">
+        <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5 hidden" id="notReleased">
         @for(m <- results) {
-            <div class="col">
             @if(!m.isReleased) {
+                <div class="col">
                 <a class="hover-scale" href="/listingGallery/@m.id">
                     <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
                         background-color: #050113;
@@ -58,7 +61,7 @@
                     </div>
                 </a>
             </div>
-      }
+            }
         }
        </div>
     </div>
