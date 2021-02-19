@@ -2,9 +2,10 @@ package controllers
 
 import dao.movieDAO
 import models.Movies
+import play.api.mvc.Results.Ok
 import play.api.mvc._
-import javax.inject._
 
+import javax.inject._
 import play.api.mvc.{AbstractController, Action, ControllerComponents}
 
 import javax.inject.Inject
@@ -21,5 +22,11 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def contactPage = Action {
     Ok(views.html.contactPage())
     //Redirect(routes.HomeController.index())
+  }
+
+  def search(keyword: String) = Action async {
+    movieDAO.searchBykeyword(keyword) map {
+      results => {println(results); Ok(views.html.contactPage())}
+    }
   }
 }
