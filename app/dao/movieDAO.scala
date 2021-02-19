@@ -30,4 +30,5 @@ object movieDAO {
     db.run(actorsMovies.result)
 
   }
+
 }
