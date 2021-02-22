@@ -1,6 +1,5 @@
 @import helper._
 @import models.discussionForm
-
 @(discussionForm: Form[Discussion])(implicit messages: Messages)
 @main("Discussions"){
     <div class="text-center">
@@ -17,6 +16,7 @@
         @inputText(discussionForm("title"), '_showConstraints -> false)
         @textarea(field = discussionForm("description"), args = 'rows -> 6, 'cols -> 68)
         @inputText(discussionForm("rating"),'min -> 0, 'max -> 10, '_showConstraints -> false)
+        @inputText(discussionForm("approved").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
         <input type="submit" value="Submit">
     }
 }

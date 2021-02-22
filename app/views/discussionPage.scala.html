@@ -14,14 +14,16 @@
     <br>
     <ul>
         @for(i <- result){
-            <br>
-            Movie title: @i.title
-            <br>
-            Review of movie and cinema: @i.description
-            <br>
-            Rating: @i.rating/10
-            <br><br>
-                <hr>
+            @if(i.onApproved){
+                <br>
+                Movie title: @i.title
+                <br>
+                Review of movie and cinema: @i.description
+                <br>
+                Rating: @i.rating/10
+                <br>
+            }
+
         }
     </ul>
     <br>
