@@ -1,24 +1,23 @@
 @import helper._
 @import models.Cinema
-@(bookingForm: Form[Booking], cinemas: Seq[Cinema], id: Int, date: java.time.LocalDate, time: java.time.LocalTime)(implicit messages: Messages)
+@(bookingForm: Form[Booking], cinemas: Seq[Cinema], id: Int, title: String, date: java.time.LocalDate, time: java.time.LocalTime)(implicit messages: Messages)
     @main("Ticket Booking") {
+    <h5>You are now booking tickets for @title</h5>
         @form(action = routes.BookingController.inputBooking()) {
-            @inputText(bookingForm("id").copy(value = Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
+            <div class="hidden" style="display: none">
+                @inputText(bookingForm("id").copy(value = Some("0")), 'style -> "display: none", '_label -> "", '_showConstraints -> false)
+                @inputText(bookingForm("movie_id").copy(value = Some(id.toString)), 'readonly -> "readonly", '_showConstraints -> false, 'style -> "display: none", '_label -> "")
+                @inputText(bookingForm("total").copy(value = Some("0")), 'style -> "display: none", '_label -> "", '_showConstraints -> false)
+            </div>
+
             @inputText(bookingForm("name_of_person"), '_showConstraints -> false, '_label -> "Name")
             @inputText(bookingForm("date").copy(value = Some(date.toString)),'readonly -> "readonly", '_showConstraints -> false, '_label -> "Date")
             @inputText(bookingForm("time").copy(value = Some(time.toString)),'readonly -> "readonly", '_showConstraints -> false, '_label -> "Time")
-            @* @input(bookingForm("time"), '_showConstraints -> false , '_label -> "Time"){ (id, name, value, args) =>*@
-            @* <input type="time" id="time" name="time"*@
-            @* min="09:00" max="18:00" required>*@
-            @* }*@
             @inputText(bookingForm("numOfAdult"), '_showConstraints -> false, '_label -> "Number of Adult Tickets", 'type -> "number", 'min -> 0, 'max -> 10)
             @inputText(bookingForm("numOfChild"), '_showConstraints -> false, '_label -> "Number of Child Tickets", 'type -> "number", 'min -> 0, 'max -> 10)
             @select(field = bookingForm("deluxe"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Would you like deluxe seating?", '_showConstraints -> false)
             @select(field = bookingForm("concessions"), options = Seq("0.0" -> "None", "1.99" -> "Coke - £1.99", "4.99" -> "Coke + Popcorn - £4.99", "7.99" -> "Coke + Popcorn + Nachos - £7.99"), '_showConstraints -> false, '_label -> "Concessions")
-            @inputText(bookingForm("movie_id").copy(value = Some(id.toString)), 'readonly -> "readonly", '_showConstraints -> false, '_label -> "Movie ID")
             @select(field = bookingForm("cinema_id"), options = cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false, '_label -> "Cinema")
-            @inputText(bookingForm("total").copy(value = Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
             <input type="submit" value="Submit">
         }
-    <p>@date, @time</p>
     }
