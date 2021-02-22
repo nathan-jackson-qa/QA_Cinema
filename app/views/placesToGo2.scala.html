@@ -2,17 +2,31 @@
 @import models.Venue
 @(results: Seq[Venue])
 @main("Places To Go") {
-<ul>
-    @for(x <- results){
-    <li><a href="@x.web_address">@x.name</a></li>
-    <li>@x.address</li>
-    <li>@x.name</li>
-    <li>@x.offers</li>
-    <li>@x.description</li>
-    <img src="/assets/@x.image"/>
-    </br>
-    }
+@for(x <- results){
+    <div class="card mb-3 border-0 border-light" style="background-color: #0A0227; color: white">
+        <div class="row g-0">
+            <div class="col-md-4 border-end border-4">
+                <img src="/assets/@x.image" alt="@x.name" style="height: 400px; width: 100%">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body p-0">
+                    <h4 class="card-title border-bottom border-3 border-light p-3 m-0 text-center" style="width: 100%;">@x.name</h4>
 
-</ul>
+                    <h5 class="p-2 pb-0 m-0">Description</h5>
+                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@x.description</h6>
 
+                    <h5 class="p-2 pb-0 m-0">Address</h5>
+                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@x.address</h6>
+
+                    <h5 class="p-2 pb-0 m-0">Offers</h5>
+                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@x.offers</h6>
+
+                    <a class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" href="@x.web_address" role="button">Visit their Website</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<br><br>
 }
