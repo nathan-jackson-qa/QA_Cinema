@@ -20,8 +20,13 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def search(keyword: String) = Action async {
-    movieDAO.searchBykeyword(keyword) map {
-      results => Ok(views.html.searchResults(results))
+    movieDAO.searchActors(keyword).flatMap {
+      firstResults =>
+        movieDAO.searchBykeyword(keyword) map {
+          secondResults => {
+            var results = firstResults.toSet ++ secondResults.toSet; Ok(views.html.searchResults(results.toSeq))
+          }
+        }
     }
   }
 

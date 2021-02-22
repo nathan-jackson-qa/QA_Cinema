@@ -23,8 +23,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/listingGallery">What's On</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="whatsOn" role="button" data-bs-toggle="dropdown" aria-expanded="false">What's On</a>
+                        <ul class="dropdown-menu" aria-labelledby="whatsOn">
+                            <li><a class="dropdown-item" href="/listingGallery">Out Now</a></li>
+                            <li><a class="dropdown-item" href="/comingSoon">Coming Soon</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/openingTimes">Opening Times</a>
@@ -72,7 +76,7 @@
                     </a>
                 </div>
                 <div class="col">
-                    <h5 style="color: white" class="text=start">Contact Us<h5>
+                    <h5 style="color: white" class="text=start">Contact Us</h5>
                     <a href="/contactPage" target="_blank">
                         <h6 class="text-decoration-none ms-1">Get in touch</h6>
                     </a>
