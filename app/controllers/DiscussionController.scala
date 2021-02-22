@@ -35,6 +35,11 @@ class DiscussionController @Inject()(cc: ControllerComponents) extends AbstractC
       }
     )
   }
+  def index2() = Action async {
+    discussionDAO.getReviews map {
+      results => Ok(views.html.admin(results))
+    }
+  }
 
   def split(text: String): Boolean = {
     val words = text.split(" ")
