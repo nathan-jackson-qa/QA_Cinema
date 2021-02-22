@@ -18,3 +18,4 @@ GET     /placesToGo/:id             controllers.placesToGoController.showCinemaV
 GET     /ticketBooking        controllers.BookingController.form(id: Int, title: String, date: String, time: String)
 POST    /Booking                    controllers.BookingController.inputBooking()
 GET     /Search                     controllers.HomeController.search(search)
+GET     /                           controllers.HomeController.viewAll
