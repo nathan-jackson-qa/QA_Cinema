@@ -6,7 +6,7 @@
 <div class="card mb-3 border-0 border-light" style="background-color: #0A0227; color: white">
     <div class="row g-0">
         <div class="col-md-4 border-end border-4">
-            <img src="/assets/@movie.img_url" alt="@movie.name" style="height: 500px; width: 100%">
+            <img src="/assets/@movie.img_url" alt="@movie.name" style="height: 550px; width: 100%">
         </div>
         <div class="col-md-8">
             <div class="card-body p-0">
@@ -23,26 +23,27 @@
 
                 <h5 class="p-2 pb-0 m-0">Age Rating</h5>
                 <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@movie.classification</h6>
-            @if(movie.isReleased) {
-                @if(movie.isReleased) {
-                    <form action="/ticketBooking" method ="GET">
-                        <h5>Book Now</h5>
-                        <div class="accordion-body">
-                            <input type="date" name="date" value = "@date.toString" min="@date" max ="@date.plusMonths(2)">
-                            <input type="hidden" name="id" value="@movie.id">
-                            <button class="btn btn-outline-primary" name="time" id="time" value="11:00" type="submit">11:00</button>
-                            <button class="btn btn-outline-primary" name="time" id="time" value="13:30" type="submit">13:30</button>
-                            <button class="btn btn-outline-primary" name="time" id="time" value="15:00" type="submit">16:00</button>
-                            <button class="btn btn-outline-primary" name="time" id="time" value="17:30" type="submit">18:30</button>
-                            <button class="btn btn-outline-primary" name="time" id="time" value="18:00" type="submit">21:00</button>
-                            <button class="btn btn-outline-primary" name="time" id="time" value="18:00" type="submit">23:30</button>
-                        </div>
-                    </form>
-                }
-                    </div>
-                </div>
 
-            }
+                @if(movie.isReleased) {
+                    @if(movie.isReleased) {
+                        <form action="/ticketBooking" method ="GET">
+                            <h5 class="p-2 pb-0 m-0">Book Now</h5>
+                            <div class="p-2 pt-1 accordion-body">
+                                <input type="date" name="date" value = "@date.toString" min="@date" max ="@date.plusMonths(2)">
+                                <input type="hidden" name="id" value="@movie.id">
+                                <button class="btn btn-outline-primary" name="time" id="time" value="11:00" type="submit">11:00</button>
+                                <button class="btn btn-outline-primary" name="time" id="time" value="13:30" type="submit">13:30</button>
+                                <button class="btn btn-outline-primary" name="time" id="time" value="15:00" type="submit">16:00</button>
+                                <button class="btn btn-outline-primary" name="time" id="time" value="17:30" type="submit">18:30</button>
+                                <button class="btn btn-outline-primary" name="time" id="time" value="18:00" type="submit">21:00</button>
+                                <button class="btn btn-outline-primary" name="time" id="time" value="18:00" type="submit">23:30</button>
+                            </div>
+                        </form>
+                    }
+                        </div>
+                    </div>
+
+                }
 
             </div>
         </div>
