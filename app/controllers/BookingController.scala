@@ -4,22 +4,26 @@ import dao.{bookingDAO, cinemaDAO, movieDAO}
 import models.{Booking, Cinema, bookingForm}
 import play.api.mvc._
 
+import java.time.{LocalDate, LocalTime}
 import scala.concurrent.ExecutionContext.Implicits.global
 import javax.inject.{Inject, Singleton}
 
 @Singleton
 class BookingController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
-  def form(id: Int) = Action.async {
+  def form(id: Int, date: String, time: String) = Action.async {
+        var newDate = LocalDate.parse(date)
+        var newTime = LocalTime.parse(time)
+        println(newTime, newDate)
     implicit request: Request[AnyContent] =>
       cinemaDAO.getAllCinemas.map {
-        results => Ok(views.html.ticketBooking(bookingForm.form, results, id))
+        results => Ok(views.html.ticketBooking(bookingForm.form, results, id, newDate, newTime))
       }
   }
 
   def inputBooking() = Action { implicit request: Request[AnyContent] =>
 
-    bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema](), 0)) },
+    bookingForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.ticketBooking(formWithErrors, Seq[Cinema](), 0, LocalDate.now, LocalTime.now)) },
       { widget =>
         val x = getPrice(widget)
         bookingDAO.add(x)

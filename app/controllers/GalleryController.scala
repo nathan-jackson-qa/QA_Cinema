@@ -7,6 +7,7 @@ import play.api.mvc._
 import javax.inject._
 import play.api.mvc.{AbstractController, Action, ControllerComponents}
 
+import java.time.LocalDate
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -25,9 +26,10 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
   }
 
   def showMovieInfo(id: Int) = Action async {
+    val startDate = LocalDate.now
     movieDAO.getMovieActors(id).flatMap { actors =>
       movieDAO.getMovieDetails(id).map {
-        case Some(movie: Movie) => Ok(views.html.individualWhatsOn(actors, movie))
+        case Some(movie: Movie) => Ok(views.html.individualWhatsOn(actors, movie, startDate))
         case None => Ok(views.html.contactPage())
       }
 
