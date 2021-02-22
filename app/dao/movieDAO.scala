@@ -31,6 +31,15 @@ object movieDAO {
     db.run(actorsMovies.result)
   }
 
+  def searchActors(search: String): Future[Seq[Movie]] = {
+    val actorsMovies = for {
+      a <- actors if ((a.firstName like s"%$search%") || (a.lastName like s"%$search%"))
+      am <- moviesActors if a.id === am.actorID
+      m <- movies if am.movieID === m.id
+    } yield (m)
+    db.run(actorsMovies.result)
+  }
+
   def getCurrentMovies: Future[Seq[Movie]] = {
     db.run(movies.filter(t => t.isReleased === true).result)
   }
