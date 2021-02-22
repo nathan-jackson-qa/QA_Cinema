@@ -12,8 +12,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class GalleryController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-  def viewAll = Action async  {
+  def outNow = Action async  {
     movieDAO.getCurrentMovies map {
+      results => Ok(views.html.whatsOn(results))
+    }
+  }
+
+  def comingSoon = Action async  {
+    movieDAO.getUpcomingMovies map {
       results => Ok(views.html.whatsOn(results))
     }
   }
