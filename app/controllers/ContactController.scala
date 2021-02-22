@@ -1,5 +1,8 @@
 package controllers
 import courier._
+import play.api.data._
+import play.api.data.Forms._
+import play.api.data.validation.Constraints._
 import play.api.mvc.{AbstractController, ControllerComponents}
 
 import javax.inject.{Inject, Singleton}
@@ -20,11 +23,11 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
     .startTls(true)()
 
 
-  def index(userName: String, domainName: String, subject: String, message: String) = Action {
-    mailer(Envelope.from(userName `@`  domainName)
+  def index(email: String, subject: String, message: String) = Action {
+    mailer(Envelope.from("teamearth137" `@`  "gmail.com")
       .to("teamearth137" `@` "gmail.com")
       .subject(subject)
-      .content(Text(message + " " + "Sent From: " + userName + "@"+ domainName))).onComplete {
+      .content(Text(message + " " + "Sent From: " + email))).onComplete {
       case Success(value) =>
         println("message delivered")
       case Failure(exception) =>
