@@ -7,7 +7,7 @@ import play.api.data.format.Formats._
 import slick.sql.SqlProfile.ColumnOption.SqlType
 import java.sql._
 
-case class Booking(id: Int = 0, name_of_person: String, date: Date, time: Int,numOfAdult: Int, numOfChild: Int, deluxe: Boolean, concessions: Double, total: Double, movie_id: Int, cinema_id: Int)
+case class Booking(id: Int = 0, name_of_person: String, date: Date, time: String,numOfAdult: Int, numOfChild: Int, deluxe: Boolean, concessions: Double, total: Double, movie_id: Int, cinema_id: Int)
 
 case class Bookings(tag: Tag) extends Table[Booking](tag, "bookings") {
   def id = column[Int]("booking_id", O.PrimaryKey, O.AutoInc)
@@ -16,7 +16,7 @@ case class Bookings(tag: Tag) extends Table[Booking](tag, "bookings") {
 
   def date = column[Date]("date")
 
-  def time = column[Int]("time")
+  def time = column[String]("time")
 
   def numOfAdult = column[Int]("numOfAdult")
 
@@ -42,10 +42,10 @@ case class Bookings(tag: Tag) extends Table[Booking](tag, "bookings") {
 object bookingForm {
   val form: Form[Booking] = Form(
     mapping(
-      "id" -> number,
+      "id" -> default(of[Int], 0),
       "name_of_person" -> text,
       "date" -> sqlDate,
-      "time" -> number,
+      "time" -> text,
       "numOfAdult" -> number(min = 0, max = 10),
       "numOfChild" -> number(min = 0, max = 10),
       "deluxe" -> boolean,
