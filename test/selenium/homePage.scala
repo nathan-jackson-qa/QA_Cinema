@@ -20,3 +20,4 @@ class homePage extends abstractTest {
     assert(webDriver.findElementById("released").isDisplayed)
   }
 }
+
