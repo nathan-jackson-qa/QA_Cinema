@@ -1,0 +1,14 @@
+@import helper._
+@import models.Discussion
+@(result: Discussion, text: String)
+@main("Discussion"){
+<h1>@text</h1>
+<br>
+<a>@result.title</a>
+<br>
+<a>@result.description</a>
+<br>
+<a>@result.rating</a>
+<br>
+<a href="/discussions">View Discussion</a>
+}

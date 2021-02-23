@@ -15,13 +15,13 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
 
   def outNow = Action async  {
     movieDAO.getCurrentMovies map {
-      results => Ok(views.html.whatsOn(results))
+      results => Ok(views.html.whatsOn(results, "Out Now"))
     }
   }
 
   def comingSoon = Action async  {
     movieDAO.getUpcomingMovies map {
-      results => Ok(views.html.whatsOn(results))
+      results => Ok(views.html.whatsOn(results, "Coming Soon"))
     }
   }
 
