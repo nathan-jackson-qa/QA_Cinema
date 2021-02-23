@@ -21,3 +21,8 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "8.0.23"
 )
 libraryDependencies += "com.github.daddykotex" %% "courier" % "3.0.0-M2a"
+
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % "test",
+  "org.scalatestplus" %% "mockito-3-4" % "3.2.2.0" % "test"
+)
