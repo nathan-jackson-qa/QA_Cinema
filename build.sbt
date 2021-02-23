@@ -21,3 +21,9 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "8.0.23"
 )
 libraryDependencies += "com.github.daddykotex" %% "courier" % "3.0.0-M2a"
+
+libraryDependencies += "org.scalatestplus" %% "selenium-3-141" % "3.2.2.0" % "test"
+
+libraryDependencies += "org.scalatest" %% "scalatest-flatspec" % "3.2.2" % "test"
+
+libraryDependencies += "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.2" % "test"
