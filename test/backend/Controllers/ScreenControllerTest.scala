@@ -10,7 +10,7 @@ import scala.concurrent.Future
 
 class ScreenControllerTest  extends PlaySpec with Results {
 
-  "Opening Times page #index" should {
+  "Screen Times page #index" should {
     "be valid" in {
       val controller = new ScreenController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.screen.apply(FakeRequest())

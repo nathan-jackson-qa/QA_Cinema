@@ -8,7 +8,7 @@ import play.api.test.{FakeRequest, Helpers}
 
 import scala.concurrent.Future
 
-class AboutControllerTests extends PlaySpec with Results {
+class AboutControllerTest extends PlaySpec with Results {
   "About page #index" should {
     "be valid" in {
       val controller = new AboutController(Helpers.stubControllerComponents())
