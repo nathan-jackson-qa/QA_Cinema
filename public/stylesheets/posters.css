@@ -66,3 +66,30 @@ footer {
     width: 200px;
     padding-right: 5px;
 }
+
+.form-text {
+    background: white;
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: black;
+    margin-top: 0.5rem;
+}
+
+textarea.form-control {
+    background: white;
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: black;
+    margin-top: 0.5rem;
+}
+
+.form-select {
+    background: white;
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: black;
+    margin-top: 0.5rem;
+}
