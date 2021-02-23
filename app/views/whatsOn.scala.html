@@ -1,7 +1,7 @@
 @import helper._
 @import models.Movie
-@(results: Seq[Movie])
-@main("What's On") {
+@(results: Seq[Movie], title: String)
+@main(title) {
 @for(m <- results) {
 <div class="card mb-5 border-0 whatsOn-card" style="background-color: #0A0227; color: white">
     <div class="row g-0">
