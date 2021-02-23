@@ -1,9 +1,7 @@
 package selenium
-import org.scalatest._
-import org.scalatest.matchers._
-import org.scalatestplus.selenium._
 
-class homePage extends flatspec.AnyFlatSpec with should.Matchers with HtmlUnit {
+
+class homePage extends abstractTest {
 
   val host = "http://localhost:9000/"
 
