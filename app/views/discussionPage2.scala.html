@@ -15,34 +15,35 @@
 </div>
 <br>
 @form(action = routes.DiscussionController.discFormPost()) {
-        <div class="card mb-5 border-1 border-light" style="background-color: #0A0227; color: white">
-            <div class="container">
-                <div class="row">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col">
-                                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                    @inputText(discussionForm("title"), 'class -> "form-text", '_label -> "Review Title", '_showConstraints -> false)
-                                </h6>
-                            </div>
-                            <div class="col">
-                                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                    @select(field = discussionForm("rating"), options = Seq("1" -> "1", "2" -> "2", "3" -> "3", "4" -> "4"," 5" -> "5","6" -> "6","7" -> "7","8" -> "8","9" -> "9","10" -> "10"), '_showConstraints -> false, '_label -> "Review Title", 'class -> "form-select")
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="col-sm">
+    <div class="card mb-5 border-1 border-light" style="background-color: #0A0227; color: white">
+        <div class="container">
+            <div class="row">
+                <div class="card-body p-0">
+                    <br>
+                    <div class="row">
+                        <div class="col">
                             <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                @textarea(field = discussionForm("description"), 'class -> "form-control", '_label -> "Description")
+                                @inputText(discussionForm("title"), 'class -> "form-text", '_label -> "Review Title", '_showConstraints -> false)
                             </h6>
                         </div>
-                        <br>
-                        <input class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" type="submit" value="Submit">
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @select(field = discussionForm("rating"), options = Seq("1" -> "1", "2" -> "2", "3" -> "3", "4" -> "4"," 5" -> "5","6" -> "6","7" -> "7","8" -> "8","9" -> "9","10" -> "10"), '_showConstraints -> false, '_label -> "Review Title", 'class -> "form-select")
+                            </h6>
+                        </div>
                     </div>
+                    <div class="col-sm">
+                        <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                            @textarea(field = discussionForm("description"), 'class -> "form-control", '_label -> "Description")
+                        </h6>
+                    </div>
+                    <br><br>
+                    <input class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" type="submit" value="Submit">
                 </div>
             </div>
         </div>
-        @inputText(discussionForm("id").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
-        @inputText(discussionForm("approved").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
-    }
+    </div>
+    @inputText(discussionForm("id").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
+    @inputText(discussionForm("approved").copy(value=Some("0")), 'style -> "display: none", 'hidden -> "hidden", '_label -> "", '_showConstraints -> false)
+}
 }

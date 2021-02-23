@@ -1,10 +1,12 @@
 @(booking: Booking)
 @main("PayPal Test"){
-    <div>
-        <h1>Checkout</h1>
-        </br>
-        <h3>Confirm the details below then proceed to Paypal Payment when ready</h3>
-        <table class="table table-borderless">
+<div class="card border-1 border-light" style="background-color: #0A0227">
+    <div class="card-body text-center">
+        <h1 class="card-title" style="color: white">Checkout</h1>
+        <p class="card-text" style="color: #C4B2BC">
+            Confirm the details below then proceed to Paypal Payment when ready
+        </p>
+        <table class="table table-light table stripped">
             <!--
             <thead class="table-dark">
                 <tr>
@@ -13,6 +15,7 @@
                 </tr>
             </thead>
             -->
+            <tbody>
             <tbody>
                 <tr>
                     <th scope="row">Name</th>
@@ -36,44 +39,45 @@
                 </tr>
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">
+            <script src="https://www.paypal.com/sdk/js?client-id=AWrAtgM5lDpvxw-QS_nX_TD_fOgP5RNKLaV7dARUCoXv6ZxifWoK8X5-mh4Tig8qAEo4Uy73Y19j9Cdc&currency=GBP&disable-funding=credit,card"></script>
+            <div id="paypal-button-container"></div>
+            <script>
+                    // Render the PayPal button into #paypal-button-container
+                    paypal.Buttons({
+
+                        // Set up the transaction
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: @booking.total
+                                    }
+                                }]
+                            });
+                        },
+
+                        // Finalize the transaction
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                // Show a success message to the buyer
+                                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                window.location.href='home';
+                            });
+
+
+                        },
+                        onCancel: function(data){
+                            alert('Transaction was cancelled')
+                        }
+
+
+                    }).render('#paypal-button-container');
+            </script>
+            &nbsp
+            <a class="btn btn-primary" style="height: 35px" href="home">Go back to Home</a>
+        </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <script src="https://www.paypal.com/sdk/js?client-id=AWrAtgM5lDpvxw-QS_nX_TD_fOgP5RNKLaV7dARUCoXv6ZxifWoK8X5-mh4Tig8qAEo4Uy73Y19j9Cdc&currency=GBP&disable-funding=credit,card"></script>
-        <div id="paypal-button-container"></div>
-        <script>
-                // Render the PayPal button into #paypal-button-container
-                paypal.Buttons({
-
-                    // Set up the transaction
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                amount: {
-                                    value: @booking.total
-                                }
-                            }]
-                        });
-                    },
-
-                    // Finalize the transaction
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            // Show a success message to the buyer
-                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                            window.location.href='home';
-                        });
-
-
-                    },
-                    onCancel: function(data){
-                        alert('Transaction was cancelled')
-                    }
-
-
-                }).render('#paypal-button-container');
-        </script>
-        &nbsp
-        <a class="btn btn-primary" href="home">Go back to Home</a>
-    </div>
+</div>
 
 }
