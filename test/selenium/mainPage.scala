@@ -55,7 +55,7 @@ class mainPage extends abstractTest {
   "The search bar" should "present all movies related the keyword" in {
     go to (host)
     click on xpath("/html/body/nav/div/div/ul/form/button")
-    webDriver.findElementByXPath("/html/body/nav/div/div/ul/form/input").sendKeys("Flushed Away")
+    webDriver.findElementByXPath("/html/body/nav/div/div/ul/form") sendKeys("Flushed Away")
     click on xpath("/html/body/nav/div/div/ul/form/button")
     webDriver.findElementByXPath("/html/body/div/div/div/div[2]/div/h4").getText should be ("Flushed Away")
 
