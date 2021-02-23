@@ -26,19 +26,15 @@ class DiscussionController @Inject()(cc: ControllerComponents) extends AbstractC
       { widget => {
         if (split(widget.description) == true || split(widget.title) == true) {
           discussionDAO.create(Discussion(widget.id, widget.title, widget.description, widget.rating, false))
+          Ok(views.html.moderation(widget, "UNSUCCESSFUL"))
         }
         else {
           discussionDAO.create(Discussion(widget.id, widget.title, widget.description, widget.rating, true))
+          Ok(views.html.moderation(widget, "SUCCESSFUL"))
         }
       }
-        Redirect(routes.DiscussionController.index())
       }
     )
-  }
-  def index2() = Action async {
-    discussionDAO.getReviews map {
-      results => Ok(views.html.admin(results))
-    }
   }
 
   def split(text: String): Boolean = {
