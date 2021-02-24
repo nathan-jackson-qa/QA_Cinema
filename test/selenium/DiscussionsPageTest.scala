@@ -1,6 +1,6 @@
 package selenium
 
-class Discussions extends abstractTest {
+class DiscussionsPageTest extends abstractTest {
 
   val host = "http://localhost:9000/discussions"
 

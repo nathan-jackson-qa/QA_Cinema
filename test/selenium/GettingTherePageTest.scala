@@ -1,10 +1,7 @@
 package selenium
+import org.scalatest.time.{Seconds, Span}
 
-import org.openqa.selenium.{By, Keys}
-
-import java.util.concurrent.TimeUnit
-
-class gettingHereTest extends abstractTest {
+class GettingTherePageTest extends abstractTest {
     val host="http://localhost:9000/gettingThere"
 
   "The getting here page" should "allow the user to switch between each cinemas details" in {

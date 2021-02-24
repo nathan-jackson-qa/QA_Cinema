@@ -30,7 +30,7 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
     movieDAO.getMovieActors(id).flatMap { actors =>
       movieDAO.getMovieDetails(id).map {
         case Some(movie: Movie) => Ok(views.html.individualWhatsOn(actors, movie, startDate))
-        case None => Ok(views.html.contactPage())
+        case None => Ok(views.html.contactPage(" "))
       }
 
     }

@@ -1,6 +1,6 @@
 package selenium
 
-class BookingTest extends abstractTest{
+class TicketBookingPageTest extends abstractTest{
 
   val host = "http://localhost:9000"
 

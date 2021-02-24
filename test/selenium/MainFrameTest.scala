@@ -1,6 +1,6 @@
 package selenium
 
-class mainPage extends abstractTest {
+class MainFrameTest extends abstractTest {
 
   val host = "http://localhost:9000/about"
 

@@ -13,7 +13,7 @@ import scala.util.{Failure, Success}
 class ContactController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def contactPage = Action {
-    Ok(views.html.contactPage())
+    Ok(views.html.contactPage(" "))
     //Redirect(routes.HomeController.index())
   }
 
@@ -34,6 +34,6 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
         println("message failed")
         exception.printStackTrace()
     }
-    Ok(views.html.contactPage())
+    Ok(views.html.contactPage("Successful!!"))
   }
 }
