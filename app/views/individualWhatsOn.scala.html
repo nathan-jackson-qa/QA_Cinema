@@ -16,10 +16,10 @@
 
                 <h5 class="p-2 pb-0 m-0">Actors</h5>
                 @for(a <- actors) {
-                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@a.firstName @a.lastName</h6>
+                    <a href="/Search?search=@a.firstName+@a.lastName" style="text-decoration: none"><h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@a.firstName @a.lastName</h6></a>
                 }
                 <h5 class="p-2 pb-0 m-0">Director</h5>
-                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@movie.director</h6>
+                     <a href="/Search?search=@movie.director" style="text-decoration: none"><h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@movie.director</h6></a>
 
                 <h5 class="p-2 pb-0 m-0">Age Rating</h5>
                 <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@movie.classification</h6>
