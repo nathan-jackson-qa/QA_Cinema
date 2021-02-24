@@ -19,7 +19,7 @@ object movieDAO {
   }
 
   def getAllMovies: Future[Seq[Movie]] = {
-    db.run(movies.result)
+    db.run(movies.sortBy(_.id.desc).result)
   }
 
   def getMovieActors(id: Int): Future[Seq[Actor]] = {
@@ -41,11 +41,11 @@ object movieDAO {
   }
 
   def getCurrentMovies: Future[Seq[Movie]] = {
-    db.run(movies.filter(t => t.isReleased === true).result)
+    db.run(movies.sortBy(_.id.desc).filter(t => t.isReleased === true).result)
   }
 
   def getUpcomingMovies: Future[Seq[Movie]] = {
-    db.run(movies.filter(t => t.isReleased === false).result)
+    db.run(movies.sortBy(_.id.desc).filter(t => t.isReleased === false).result)
   }
 
   def searchBykeyword(keyword: String): Future[Seq[Movie]] = {
