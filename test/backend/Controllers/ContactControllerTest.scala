@@ -20,7 +20,7 @@ class ContactControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.contactPage.apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage())
+      bodyText mustBe contentAsString(views.html.contactPage(" "))
     }
   }
 
@@ -48,7 +48,7 @@ class ContactControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.index("teamearth137@gmail.com", "test subject" , "test message").apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage())
+      bodyText mustBe contentAsString(views.html.contactPage("Successful!!"))
 //      val mailer = Mailer(mockedSession)
 //      val future = mailer(Envelope.from("teamearth137" `@`  "gmail.com")
 //        .to("teamearth137" `@` "gmail.com")

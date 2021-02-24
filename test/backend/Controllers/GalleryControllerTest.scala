@@ -21,7 +21,7 @@ class GalleryControllerTest extends PlaySpec with Results with GuiceOneAppPerSui
       val result: Future[Result] = controller.outNow.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(movieDAO.getCurrentMovies map {
-        results => Ok(views.html.whatsOn(results))
+        results => Ok(views.html.whatsOn(results, "Out Now"))
       })
     }
   }
@@ -31,7 +31,7 @@ class GalleryControllerTest extends PlaySpec with Results with GuiceOneAppPerSui
       val result: Future[Result] = controller.comingSoon.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(movieDAO.getUpcomingMovies map {
-        results => Ok(views.html.whatsOn(results))
+        results => Ok(views.html.whatsOn(results, "Coming Soon"))
       })
     }
   }

@@ -45,7 +45,7 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.contactPage.apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage())
+      bodyText mustBe contentAsString(views.html.contactPage(""))
     }
   }
 
@@ -54,7 +54,7 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.index("teamearth137@gmail.com", "test subject", "test message").apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage())
+      bodyText mustBe contentAsString(views.html.contactPage(""))
     }
   }
 
@@ -94,7 +94,7 @@ class AllControllerTest extends PlaySpec with Results {
       val result: Future[Result] = controller.outNow.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(movieDAO.getCurrentMovies map {
-        results => Ok(views.html.whatsOn(results))
+        results => Ok(views.html.whatsOn(results, " "))
       })
     }
   }
@@ -105,7 +105,7 @@ class AllControllerTest extends PlaySpec with Results {
       val result: Future[Result] = controller.comingSoon.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(movieDAO.getUpcomingMovies map {
-        results => Ok(views.html.whatsOn(results))
+        results => Ok(views.html.whatsOn(results, "Coming Soon"))
       })
     }
   }
