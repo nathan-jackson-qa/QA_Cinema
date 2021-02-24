@@ -45,20 +45,20 @@
                     <div class="row m-0 p-0">
                         <div class="col">
                             <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                @select(field = bookingForm("concessions"), options = Seq("0.0" -> "None", "1.99" -> "Coke - £1.99", "4.99" -> "Coke + Popcorn - £4.99", "7.99" -> "Coke + Popcorn + Nachos - £7.99"), '_showConstraints -> false, '_label -> "Concessions", 'class -> "form-control")
+                                @select(field = bookingForm("concessions"), options = Seq("0.0" -> "None", "1.99" -> "Coke - £1.99", "4.99" -> "Coke + Popcorn - £4.99", "7.99" -> "Coke + Popcorn + Nachos - £7.99"), '_showConstraints -> false, '_label -> "Concessions", 'class -> "form-control-s")
                             </h6>
                         </div>
                     </div>
                     <div class="row m-0 p-0">
                         <div class="col">
                             <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                @select(field = bookingForm("cinema_id"), options = cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false, '_label -> "Cinema", 'class -> "form-control")
+                                @select(field = bookingForm("cinema_id"), options = cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false, '_label -> "Cinema", 'class -> "form-control-s")
 
                             </h6>
                         </div>
                         <div class="col">
                             <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
-                                @select(field = bookingForm("deluxe"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Would you like deluxe seating?", '_showConstraints -> false, 'class -> "form-control")
+                                @select(field = bookingForm("deluxe"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Would you like deluxe seating?", '_showConstraints -> false, 'class -> "form-control-s")
                             </h6>
                         </div>
                     </div>
