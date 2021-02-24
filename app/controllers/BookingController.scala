@@ -14,7 +14,6 @@ class BookingController @Inject()(cc: ControllerComponents) extends AbstractCont
   def form(id: Int, title: String, date: String, time: String) = Action.async {
         var newDate = LocalDate.parse(date)
         var newTime = LocalTime.parse(time)
-        println(newTime, newDate)
     implicit request: Request[AnyContent] =>
       cinemaDAO.getAllCinemas.map {
         results => Ok(views.html.ticketBooking(bookingForm.form, results, id, title, newDate, newTime))
