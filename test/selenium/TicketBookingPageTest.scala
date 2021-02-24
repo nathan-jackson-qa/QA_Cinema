@@ -7,8 +7,9 @@ class TicketBookingPageTest extends abstractTest{
   //Test1
   "The List gallery" should "allow us to pick a movie" in {
     go to (host+"/listingGallery")
+    var x = webDriver.findElementByXPath("/html/body/div/div[11]/div/div[2]/div/h4").getText
     click on xpath("/html/body/div/div[11]/div/div[2]/div/div/a")
-    pageTitle should be ("QA Cinemas : Shrek")
+    pageTitle should be (s"QA Cinemas : $x")
   }
 
   //Test2
