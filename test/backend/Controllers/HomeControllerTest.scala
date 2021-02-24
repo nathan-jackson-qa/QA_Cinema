@@ -2,6 +2,7 @@ package backend.Controllers
 
 import controllers.HomeController
 import dao.movieDAO
+import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}
 import play.api.test.{FakeRequest, Helpers}
@@ -21,6 +22,14 @@ class HomeControllerTest  extends PlaySpec with Results {
       bodyText mustBe contentAsString(movieDAO.getAllMovies map {
         results => Ok(views.html.homePage(results))
       })
+    }
+  }
+
+  "Home page #search" should {
+    "be valid" in {
+      val result: Future[Result] = controller.search("shrek").apply(FakeRequest())
+      val bodyText = contentAsString(result)
+      bodyText should include ("Shrek, an ogre, embarks on a journey with a donkey to rescue Princess Fiona from a vile lord and regain his swamp.")
     }
   }
 }

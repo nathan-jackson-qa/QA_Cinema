@@ -26,3 +26,5 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % "test",
   "org.scalatestplus" %% "mockito-3-4" % "3.2.2.0" % "test"
 )
+
+libraryDependencies += "org.jvnet.mock-javamail" % "mock-javamail" % "1.9" % "test"
