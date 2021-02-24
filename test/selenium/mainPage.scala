@@ -57,7 +57,7 @@ class mainPage extends abstractTest {
     textField(id("searchMovies")).value = "Bond"
     click on id("SearchBtn")
     pageTitle should be ("QA Cinemas : Search Results")
-
+    assertResult(webDriver.findElementByXPath("/html/body/div/div/div/div[2]/div/h4").getText){"No Time to Die"}
   }
 
 }
