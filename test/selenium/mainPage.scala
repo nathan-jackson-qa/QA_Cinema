@@ -54,12 +54,10 @@ class mainPage extends abstractTest {
   //Test=3
   "The search bar" should "present all movies related the keyword" in {
     go to (host)
-    click on xpath("/html/body/nav/div/div/ul/form/button")
-    webDriver.findElementByXPath("/html/body/nav/div/div/ul/form/input").sendKeys("Flushed Away")
-    click on xpath("/html/body/nav/div/div/ul/form/button")
-    webDriver.findElementByXPath("/html/body/div/div/div/div[2]/div/h4").getText should be ("Flushed Away")
+    textField(id("searchMovies")).value = "Bond"
+    click on id("SearchBtn")
+    pageTitle should be ("QA Cinemas : Search Results")
 
-    //new WebDriverWait(webDriver, 2).until(ExpectedConditions.visibilityOf(webDriver.findElementByXPath("/html/body/nav/div/div/ul/li[2]/ul/li[1]/a")))
   }
 
 }
