@@ -43,4 +43,12 @@ class GalleryControllerTest extends PlaySpec with Results with GuiceOneAppPerSui
       bodyText should include ("Shrek, an ogre, embarks on a journey with a donkey to rescue Princess Fiona from a vile lord and regain his swamp.")
     }
   }
+
+  "Gallery page #showMovieInfo" should {
+    "be valid (invalid value)" in {
+      val result: Future[Result] = controller.showMovieInfo(6000000).apply(FakeRequest())
+      val bodyText = contentAsString(result)
+      bodyText should include ("QA Cinemas : Contact Page")
+    }
+  }
 }

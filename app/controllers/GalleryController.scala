@@ -2,10 +2,7 @@ package controllers
 
 import dao.movieDAO
 import models.Movie
-import play.api.mvc._
-
-import javax.inject._
-import play.api.mvc.{AbstractController, Action, ControllerComponents}
+import play.api.mvc.{AbstractController, ControllerComponents}
 
 import java.time.LocalDate
 import javax.inject.Inject

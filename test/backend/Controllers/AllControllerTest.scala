@@ -4,9 +4,10 @@ import controllers.{AboutController, BookingController, ClassificationController
 import dao.{cinemaDAO, discussionDAO, movieDAO, venuesDAO}
 import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec
+import play.api.libs.json.Json
 import play.api.mvc.{Result, Results}
 import play.api.test.{FakeRequest, Helpers}
-import play.api.test.Helpers.{contentAsString, defaultAwaitTimeout}
+import play.api.test.Helpers.{POST, contentAsString, defaultAwaitTimeout}
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -27,7 +28,29 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new BookingController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.form(1, "Shrek", "2021-10-21", "21:00").apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText should include ("<h5>You are now booking tickets for Shrek</h5>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">You are now booking tickets for Shrek</h1>")
+    }
+  }
+
+  "Booking page #inputBooking" should {
+    "be valid (with deluxe)" in {
+      val controller = new BookingController(Helpers.stubControllerComponents())
+      val bookingJson =
+        Json.obj("id" -> 1, "name_of_person" -> "Test", "date" -> "2021-10-21", "time" -> "21:00", "numOfAdult" -> 2, "numOfChild" -> 1, "deluxe" -> true, "concessions" -> 1.99, "total" -> 10, "movie_id" -> 1, "cinema_id" -> 1)
+      val result: Future[Result] = controller.inputBooking().apply(FakeRequest(POST, "Booking").withJsonBody(bookingJson))
+      val bodyText = contentAsString(result)
+      bodyText should include ("Confirm the details below then proceed to Paypal Payment when ready")
+    }
+  }
+
+  "Booking page #inputBooking" should {
+    "be valid (without deluxe)" in {
+      val controller = new BookingController(Helpers.stubControllerComponents())
+      val bookingJson =
+        Json.obj("id" -> 1, "name_of_person" -> "Test", "date" -> "2021-10-21", "time" -> "21:00", "numOfAdult" -> 2, "numOfChild" -> 1, "deluxe" -> false, "concessions" -> 1.99, "total" -> 10, "movie_id" -> 1, "cinema_id" -> 1)
+      val result: Future[Result] = controller.inputBooking().apply(FakeRequest(POST, "Booking").withJsonBody(bookingJson))
+      val bodyText = contentAsString(result)
+      bodyText should include ("Confirm the details below then proceed to Paypal Payment when ready")
     }
   }
 
@@ -45,7 +68,7 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.contactPage.apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage(""))
+      bodyText mustBe contentAsString(views.html.contactPage(" "))
     }
   }
 
@@ -54,7 +77,7 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.index("teamearth137@gmail.com", "test subject", "test message").apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText mustBe contentAsString(views.html.contactPage(""))
+      bodyText mustBe contentAsString(views.html.contactPage("Successful!!"))
     }
   }
 
@@ -74,16 +97,27 @@ class AllControllerTest extends PlaySpec with Results {
       val controller = new DiscussionController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.discForm().apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText should include ("<h1> Welcome to our discussion board movie lovers! </h1>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
     }
   }
 
   "Discussion page #discPost" should {
     "be valid" in {
       val controller = new DiscussionController(Helpers.stubControllerComponents())
-      val result: Future[Result] = controller.discFormPost().apply(FakeRequest())
+      val discussionJson = Json.obj("id" -> 1, "title" -> "shrek", "description" -> "test description", "rating" -> "10", "onApproved" -> false)
+      val result: Future[Result] = controller.discFormPost().apply(FakeRequest(POST, "discussions/entry").withJsonBody(discussionJson))
       val bodyText = contentAsString(result)
-      bodyText should include ("<h1> Welcome to our discussion board movie lovers! </h1>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Your review was: SUCCESSFUL</h1>")
+    }
+  }
+
+  "Discussion page #discPost" should {
+    "be valid (with profanity)" in {
+      val controller = new DiscussionController(Helpers.stubControllerComponents())
+      val discussionJson = Json.obj("id" -> 1, "title" -> "shrek", "description" -> "wh00r description", "rating" -> "10", "onApproved" -> false)
+      val result: Future[Result] = controller.discFormPost().apply(FakeRequest(POST, "discussions/entry").withJsonBody(discussionJson))
+      val bodyText = contentAsString(result)
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Your review was: UNSUCCESSFUL</h1>")
     }
   }
 
@@ -94,7 +128,7 @@ class AllControllerTest extends PlaySpec with Results {
       val result: Future[Result] = controller.outNow.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(movieDAO.getCurrentMovies map {
-        results => Ok(views.html.whatsOn(results, " "))
+        results => Ok(views.html.whatsOn(results, "Out Now"))
       })
     }
   }
@@ -116,6 +150,15 @@ class AllControllerTest extends PlaySpec with Results {
       val result: Future[Result] = controller.showMovieInfo(1).apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText should include ("Shrek, an ogre, embarks on a journey with a donkey to rescue Princess Fiona from a vile lord and regain his swamp.")
+    }
+  }
+
+  "Gallery page #showMovieInfo" should {
+    "be valid (invalid value)" in {
+      val controller = new GalleryController(Helpers.stubControllerComponents())
+      val result: Future[Result] = controller.showMovieInfo(6000000).apply(FakeRequest())
+      val bodyText = contentAsString(result)
+      bodyText should include ("QA Cinemas : Contact Page")
     }
   }
 
