@@ -15,6 +15,7 @@ class AboutControllerTest extends PlaySpec with Results {
       val result: Future[Result] = controller.index.apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(views.html.aboutPage())
+
     }
   }
 }
