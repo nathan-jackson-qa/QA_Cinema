@@ -17,7 +17,7 @@ class BookingControllerTest extends PlaySpec with Results {
     "be valid" in {
       val result: Future[Result] = controller.form(1, "Shrek", "2021-10-21", "21:00").apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText should include ("<h5>You are now booking tickets for Shrek</h5>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">You are now booking tickets for Shrek</h1>")
     }
   }
 }

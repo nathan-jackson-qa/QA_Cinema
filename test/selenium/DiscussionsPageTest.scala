@@ -28,7 +28,7 @@ class DiscussionsPageTest extends abstractTest {
     //textArea("description").value = "Shrek 2 was great, but very childish"
     click on id("submitForm")
     pageTitle should be ("QA Cinemas : Moderated Review")
-    assert("SUCCESSFUL" == webDriver.findElementByXPath("/html/body/div/h1").getText)
+    assert("Your review was: SUCCESSFUL" == webDriver.findElementByXPath("/html/body/div/div[1]/div/h1").getText)
   }
 
   "The review form - UNSUCCESSFUL" should "allow the user to input review and submit and it should be unsuccessful" in {
@@ -40,6 +40,6 @@ class DiscussionsPageTest extends abstractTest {
     //textArea("description").value = "Shrek 2 was great, but very childish"
     click on id("submitForm")
     pageTitle should be ("QA Cinemas : Moderated Review")
-    assert("UNSUCCESSFUL" == webDriver.findElementByXPath("/html/body/div/h1").getText)
+    assert("Your review was: UNSUCCESSFUL" == webDriver.findElementByXPath("/html/body/div/div[1]/div/h1").getText)
   }
 }

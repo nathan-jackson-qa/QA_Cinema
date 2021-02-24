@@ -35,7 +35,7 @@ class DiscussionControllerTest extends PlaySpec with Results with GuiceOneAppPer
     "be valid" in {
       val result: Future[Result] = controller.discForm().apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText should include ("<h1> Welcome to our discussion board movie lovers! </h1>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
     }
   }
 
@@ -43,7 +43,7 @@ class DiscussionControllerTest extends PlaySpec with Results with GuiceOneAppPer
     "be valid" in {
       val result: Future[Result] = controller.discFormPost().apply(FakeRequest())
       val bodyText = contentAsString(result)
-      bodyText should include ("<h1> Welcome to our discussion board movie lovers! </h1>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
     }
   }
 
@@ -54,7 +54,7 @@ class DiscussionControllerTest extends PlaySpec with Results with GuiceOneAppPer
       val result = call(controller.discFormPost(), request)
       //result.body should include ("<h1> Welcome to our discussion board movie lovers! </h1>") //Ok(views.html.discussionPage2(discussionForm.form))
       //result. must contain ("<h1> Welcome to our discussion board movie lovers! </h1>")
-      contentAsString(result) should include ("<h1> Welcome to our discussion board movie lovers! </h1>")
+      contentAsString(result) should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
     }
   }
 }
