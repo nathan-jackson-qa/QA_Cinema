@@ -103,3 +103,11 @@ select.form-control {
     color: black;
     margin-top: 0.5rem;
 }
+
+.date-selector {
+    height: 42px;
+    color: #fff;
+    background-color: #333B84;
+    border-color: #333B84;
+    border-radius: 5px;
+}
