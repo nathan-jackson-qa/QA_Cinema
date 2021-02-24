@@ -1,80 +1,105 @@
 @main("About Page") {
-    <div>
-        <head>
-        <style>
-                div {
-                    text-align: justify;
-                    text-justify: inter-word;
-                }
-        </style>
-        </head>
-
-        <h1>About Page</h1>
-        <h2>Team Earth</h2>
-        <p>This website was created by members of team Earth. At team Earth we value effective devops methods to ensure the content that we create is
-        suited for our users needs with a specific focus on what it is exactly they want to do first and then
-        worrying about the implementation afterwards. Because of this we utilised agile methods and used the scrum process to ensure the team
-        is focusing on the right tasks and understand what their future goals are, all with the customer in mind. So what is scrum?</p>
-        <br>
-        <hr style="color: white">
-        <div style="color: white">
-            <div>
-            <h2>Our process</h2>
-            <br>
-            <p>At the start of the project we created the user stories with equal responsibility in order to match the specification. Plan it poker was used
-            on each user story in order to get a sense for how much effort should go into each task. The first initial sprint contained the tasks that were required
-            in order to complete each page except for the pages that needed more effort like bookings, discussion and the homepage. These were added later on
-            as throughout the first week we completed user stories at a satisfactory pace. Chetan as product owner took an active role in organising what task would need to be
-            prioritised. The testing user stories were created and completed in the second week as the product was functionally finished at this point. Each day started with a kalimba song
-            to energise the team performed by Ashley the scrum master. This was followed by a 5 minute stand-up meeting with each team member stating what they did yesterday, what they were going to do that day and then any blockers
-            stating how they were stymied in their work. Once this was complete our work was resumed for the day. If you would like to meet the team, their details are below!
+<div class="row">
+    <div class="card border-1 border-light" style="background-color: #0A0227">
+        <div class="card-body text-center">
+            <h1 class="card-title" style="color: white">About Page</h1>
+            <p class="card-text" style="color: white">
+                This website was created by members of team Earth. At team Earth we value effective devops methods to ensure the content that we create is
+                suited for our users needs with a specific focus on what it is exactly they want to do first and then
+                worrying about the implementation afterwards. Because of this we utilised agile methods and used the scrum process to ensure the team
+                is focusing on the right tasks and understand what their future goals are, all with the customer in mind. So what is scrum?
             </p>
-                <div class="row">
-                    <div class="d-grid gap-0 col">
-                        Chetan Pardeep
-                            <p class="fst-italic">CPardeep@@academytrainee.com -
-                                <a href="https://github.com/QAcpardeep"> Github</a></p>
-                        </br>
-                        Ashley Cameron
-                            <p class="fst-italic">ACameron@@academytrainee.com -
-                                <a href="https://github.com/AshleyCameron1994"> Github</a></p>
-                        </br>
-                        Nathan Jackson
-                            <p class="fst-italic">NJackson@@academytrainee.com -
-                                <a href="https://github.com/nathan-jackson-qa"> Github</a></p>
-                        </br>
-                        Carl Angeles
-                            <p class="fst-italic">CAngeles@@academytrainee.com -
-                                <a href="https://github.com/QA-CarlA"> Github</a></p>
-                        </br>
-                        Sam Williams
-                            <p class="fst-italic">SWilliams@@academytrainee.com -
-                                <a href="https://github.com/QA-SamWilliams"> Github</a></p>
-                    </div>
-                    <div class="col">
-                        <img src="@routes.Assets.versioned("images/Team-Earth.png")" width=700 height="700">
-                    </div>
-                </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="card border-0 border-light whatsOn-card" style="background-color: #0A0227">
+        <div class="card-body text-center">
+            <h1 class="card-title" style="color: white">Our process</h1>
+            <p class="card-text" style="color: white">
+                At the start of the project we created the user stories with equal responsibility in order to match the specification. Plan it poker was used
+                on each user story in order to get a sense for how much effort should go into each task. The first initial sprint contained the tasks that were required
+                in order to complete each page except for the pages that needed more effort like bookings, discussion and the homepage. These were added later on
+                as throughout the first week we completed user stories at a satisfactory pace. Chetan as product owner took an active role in organising what task would need to be
+                prioritised. The testing user stories were created and completed in the second week as the product was functionally finished at this point. Each day started with a kalimba song
+                to energise the team performed by Ashley the scrum master. This was followed by a 5 minute stand-up meeting with each team member stating what they did yesterday, what they were going to do that day and then any blockers
+                stating how they were stymied in their work. Once this was complete our work was resumed for the day. If you would like to meet the team, their details are below!
+            </p>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card mb-3 border-0 border-light whatsOn-card" style="background-color: #0A0227; color: white">
+    <div class="row g-0">
+        <div class="col-md-4 border-end border-4">
+            <img src="assets/images/Team-Earth.png" alt="Team Earth" style="height: 425 px; width: 100%">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body p-0">
+                <h4 class="card-title border-bottom border-3 border-light p-3 m-0 text-center" style="width: 100%;">Members of Team Earth</h4>
+                <h5 class="p-2 pb-0 m-0">Chetan Pardeep</h5>
+                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                    CPardeep@@academytrainee.com -
+                    <a href="https://github.com/QAcpardeep"> Github</a>
+                </h6>
+
+                <h5 class="p-2 pb-0 m-0">Ashley Cameron</h5>
+                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                    ACameron@@academytrainee.com -
+                    <a href="https://github.com/AshleyCameron1994"> Github</a>
+                </h6>
+
+                <h5 class="p-2 pb-0 m-0">Nathan Jackson</h5>
+                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                    NJackson@@academytrainee.com -
+                    <a href="https://github.com/nathan-jackson-qa"> Github</a>
+                </h6>
+
+                <h5 class="p-2 pb-0 m-0">Carl Angeles</h5>
+                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                    CAngeles@@academytrainee.com -
+                    <a href="https://github.com/QA-CarlA"> Github</a>
+                </h6>
+
+                <h5 class="p-2 pb-0 m-0">Sam Williams</h5>
+                <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                    SWilliams@@academytrainee.com -
+                    <a href="https://github.com/QA-SamWilliams"> Github</a>
+                </h6>
             </div>
         </div>
-        <br>
-        <h2>The process</h2>
-        <br>
-        <p>Scrum is a framework that allows development teams to have a certain freedom and flexibility especially as
-            situations change. It was developed so that developers could focus on solving the specific problems in user story form with
-            a sense of independence as after all they are the ones with the technical know how. Their tasks are put into user stories with the customers view
-            being the main focus of the task. These user stories are time-boxed iterations that can be collated and added to what are called sprints.
-            These sprints can consist of multiple user stories that can relate to each other, known as epics, and all have associated story point estimates that predict their finish time.
-            A key player in this process is the scrum master. It is their role to oversee the creation and completion of user stories keeping in mind
-            the customers wants and needs. It is also their job to motivate and energise the team conducting stand-up meetings in the morning to ensure everybody knows what their
-            aim is and to see if there is anything blocking the development process. The scrum master reports to the product owner who has the needs of the customers in mind and ensures that his vision
-            of what the customer wants is being correctly realised. They are also responsible for organizing the user story backlog as they are the most in touch with what needs to be done
-            and what does not for the time being. For more information on the scrum process please click here: <a href="http://www.scrum.org" target="_blank">Scrum.org</a></p>
-        <br>
-        <div class="text-center">
-            <img src="@routes.Assets.versioned("images/Scrum-Process.png")" width=800 height="500">
-        </div>
-        <p class="text-center"> Here is a flow chart of the overall scrum agile framework including sprints and the product backlog</p>
-        <br>
     </div>
+</div>
+<div class="row">
+    <div class="card border-0 border-light whatsOn-card" style="background-color: #0A0227">
+        <div class="card-body text-center">
+            <h1 class="card-title" style="color: white">The process</h1>
+            <p class="card-text" style="color: white">
+                Scrum is a framework that allows development teams to have a certain freedom and flexibility especially as
+                situations change. It was developed so that developers could focus on solving the specific problems in user story form with
+                a sense of independence as after all they are the ones with the technical know how. Their tasks are put into user stories with the customers view
+                being the main focus of the task. These user stories are time-boxed iterations that can be collated and added to what are called sprints.
+                These sprints can consist of multiple user stories that can relate to each other, known as epics, and all have associated story point estimates that predict their finish time.
+                A key player in this process is the scrum master. It is their role to oversee the creation and completion of user stories keeping in mind
+                the customers wants and needs. It is also their job to motivate and energise the team conducting stand-up meetings in the morning to ensure everybody knows what their
+                aim is and to see if there is anything blocking the development process. The scrum master reports to the product owner who has the needs of the customers in mind and ensures that his vision
+                of what the customer wants is being correctly realised. They are also responsible for organizing the user story backlog as they are the most in touch with what needs to be done
+                and what does not for the time being. For more information on the scrum process please click here: <a href="http://www.scrum.org" target="_blank">Scrum.org</a></p>
+            </p>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="card border-0 whatsOn-card p-0" style="background-color: #0A0227">
+        <img src="@routes.Assets.versioned("images/Scrum-Process.png")" class="card-img-top">
+        <div class="card-body border-top border-light text-center">
+            <p class="card-text" style="color: #C4B2BC">
+                Here is a flow chart of the overall scrum agile framework including sprints and the product backlog
+            </p>
+        </div>
+    </div>
+</div>
+<br><br>
 }
