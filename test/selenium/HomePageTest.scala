@@ -1,7 +1,7 @@
 package selenium
 
 
-class homePage extends abstractTest {
+class HomePageTest extends abstractTest {
 
   val host = "http://localhost:9000/"
 
@@ -20,3 +20,4 @@ class homePage extends abstractTest {
     assert(webDriver.findElementById("released").isDisplayed)
   }
 }
+

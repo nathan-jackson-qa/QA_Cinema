@@ -1,5 +1,0 @@
-package selenium
-
-class gettingHereTest {
-
-}
