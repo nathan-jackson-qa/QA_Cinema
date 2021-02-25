@@ -1,0 +1,65 @@
+@(cinemas: Seq[Cinema])
+@main("Getting Here") {
+<div class="row">
+    <div class="card border-1 border-light" style="background-color: #0A0227">
+        <div class="card-body text-center">
+            <h1 class="card-title" style="color: white">Getting Here</h1>
+            <p class="card-text" style="color: white">
+                Please select the cinema that you would like to visit, to see the full address of the theatre, directions to get there, nearby car parking options,
+                and the ability to view local venues to visit before or after your movie going experience.
+            </p>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="row">
+    <ul class="nav justify-content-center nav-fill" id="pills-tab" role="tablist">
+        @for(cinema <- cinemas) {
+        <li class="nav-item" role="presentation">
+            <button class="btn btn-outline-primary" style="width: 90%" id="pills-@cinema.id-tab" data-bs-toggle="pill" data-bs-target="#pills-@cinema.id" type="button" role="tab" aria-controls="pills-@cinema.id" aria-selected="false">@cinema.name</button>
+        </li>
+        }
+    </ul>
+</div>
+<br><br>
+<div class="tab-content" id="pills-tabContent">
+    @for(cinema <- cinemas) {
+    <div class="tab-pane fade" id="pills-@cinema.id" role="tabpanel" aria-labelledby="pills-@cinema.id-tab">
+        <div class="card mb-3 border-0 border-light" style="background-color: #0A0227; color: white">
+            <div class="row g-0">
+                <div class="col-md-4 border-end border-4">
+                    <img src="assets/@cinema.img_src" alt="@cinema.name" style="height: 500px; width: 100%">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body p-0">
+                        <h4 class="card-title border-bottom border-3 border-light p-3 m-0 text-center" style="width: 100%;">@cinema.name</h4>
+                        <h5 class="p-2 pb-0 m-0">Cinema Name</h5>
+                        <h6 class="card-text p-2 pt-1" id="cinema-@cinema.id" style="color: #D8D4F2">@cinema.name</h6>
+
+                        <h5 class="p-2 pb-0 m-0">Cinema Address</h5>
+                        <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@cinema.address</h6>
+
+                        <h5 class="p-2 pb-0 m-0">Directions</h5>
+                        <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@cinema.directions</h6>
+
+                        <h5 class="p-2 pb-0 m-0">Parking</h5>
+                        <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">@cinema.parking</h6>
+
+                        <a class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" href="/placesToGo/@cinema.id" role="button">View Nearby Venues</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0">
+            <div class="card-body" style="background-color: #0A0227; color: white">
+                <h5 class="card-title text-center">Maps</h5>
+            </div>
+            <iframe src="@cinema.g_location" class="card-img-bottom" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+    }
+</div>
+<br><br>
+}

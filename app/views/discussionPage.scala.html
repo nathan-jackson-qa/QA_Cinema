@@ -1,0 +1,45 @@
+@import helper._
+@import models.Discussion
+@(result: Seq[Discussion])
+@main("Discussion"){
+<div class="card border-1 border-light" style="background-color: #0A0227">
+    <div class="card-body text-center">
+        <h1 class="card-title" style="color: white">Discussions</h1>
+        <p class="card-text" style="color: white">
+            Leave a review on a movie or one of our premises!
+        </p>
+    </div>
+</div>
+<br>
+<div class="row justify-content-center">
+    <a class="btn btn-outline-primary" href="discussions/form">Leave a review</a>
+</div>
+<br>
+@for(i <- result){
+    @if(i.onApproved){
+        <div class="card mb-5 border-0 whatsOn-card" style="background-color: #0A0227; color: white">
+            <div class="container">
+                <div class="row">
+                    <div class="card-body p-0">
+                        <div class="col-sm">
+                            <h5 class="p-2 pb-0 m-0">Review Title : @i.title</h5>
+                        </div>
+                        <div class="col-sm">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @i.description
+                            </h6>
+                        </div>
+                        <div class="col-sm">
+                            <h5 class="p-2 pb-0 m-0">Rating</h5>
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @i.rating/10
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+<br>
+}

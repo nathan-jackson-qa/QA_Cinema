@@ -1,15 +1,39 @@
 package controllers
 
-import javax.inject._
+import dao.movieDAO
+import models.{Movie, Movies}
+import play.api.mvc.Results.Ok
 import play.api.mvc._
-import scala.util.{Failure, Success}
+
+import javax.inject._
+import play.api.mvc.{AbstractController, Action, ControllerComponents}
+import scala.collection.mutable.Set
+import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
 
-@Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-  def index = Action {
-    Ok(views.html.homePage())
+  def viewAll = Action async {
+    movieDAO.getAllMovies map {
+      results => Ok(views.html.homePage(results))
+    }
   }
 
+  def search(keyword: String) = Action async {
+    var words = keyword.split(" ")
+    var movies: Set[Movie] = Set()
+    for (word <- words) {
+      movieDAO.searchActors(word) map {
+        results => {
+          movies ++= results
+        }
+      }
+    }
+    movieDAO.searchBykeyword(keyword) map {
+      secondResults => {
+        var results = movies ++ secondResults.toSet;
+        Ok(views.html.searchResults(results.toSeq))
+      }
+    }
+  }
 }

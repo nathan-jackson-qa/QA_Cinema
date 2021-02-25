@@ -1,0 +1,35 @@
+@import helper._
+@import models.Discussion
+@(result: Discussion, text: String)
+@main("Moderated Review"){
+<div class="card border-1 border-light" style="background-color: #0A0227">
+    <div class="card-body text-center">
+        <h1 class="card-title" style="color: white">Your review was: @text</h1>
+    </div>
+</div>
+<br>
+<div class="card mb-5 border-0 whatsOn-card" style="background-color: #0A0227; color: white">
+    <div class="container">
+        <div class="row">
+            <div class="card-body p-0">
+                <div class="col-sm">
+                    <h5 class="p-2 pb-0 m-0">Review Title : @result.title</h5>
+                </div>
+                <div class="col-sm">
+                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                        @result.description
+                    </h6>
+                </div>
+                <div class="col-sm">
+                    <h5 class="p-2 pb-0 m-0">Rating</h5>
+                    <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                        @result.rating/10
+                    </h6>
+                </div>
+                <a class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" href="/discussions" role="button">View Discussion</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+}
