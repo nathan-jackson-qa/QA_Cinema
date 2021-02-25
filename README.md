@@ -32,9 +32,9 @@ You will then see all the tests being carried out and after all have run, an ove
 
 
 ## Acknowledgments
-Profanity filter - Areeb Beigh - https://github.com/areebbeigh/profanityfilter/blob/master/profanityfilter/data/badwords.txt
+Areeb Beigh - Profanity filter - https://github.com/areebbeigh/profanityfilter/blob/master/profanityfilter/data/badwords.txt
 
-Stylesheets - Bootstrap - https://getbootstrap.com/
+Bootstrap - Stylesheets - https://getbootstrap.com/
 
 Paypal - Mock Paypal Checkout - https://developer.paypal.com/home
 
