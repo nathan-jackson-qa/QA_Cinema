@@ -1,0 +1,21 @@
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /home                       controllers.HomeController.viewAll
+GET     /about                      controllers.AboutController.index
+GET     /classifications            controllers.ClassificationController.classification
+GET     /contact                    controllers.ContactController.contactPage
+GET     /contactSend                controllers.ContactController.index(email, subject, message)
+GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /screens                    controllers.ScreenController.screen
+GET     /gettingThere               controllers.GettingHereController.index
+GET     /openingTimes               controllers.OpeningTimesController.index
+GET     /listingGallery             controllers.GalleryController.outNow
+GET     /listingGallery/:id         controllers.GalleryController.showMovieInfo(id: Int)
+GET     /comingSoon                 controllers.GalleryController.comingSoon
+GET     /discussions                controllers.DiscussionController.index()
+GET     /discussions/form           controllers.DiscussionController.discForm()
+POST    /discussions/entry          controllers.DiscussionController.discFormPost()
+GET     /placesToGo/:id             controllers.placesToGoController.showCinemaVenue(id: Int)
+GET     /ticketBooking              controllers.BookingController.form(id: Int, title: String, date: String, time: String)
+POST    /Booking                    controllers.BookingController.inputBooking()
+GET     /Search                     controllers.HomeController.search(search)
+GET     /                           controllers.HomeController.viewAll
