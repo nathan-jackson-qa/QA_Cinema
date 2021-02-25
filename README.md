@@ -1,5 +1,6 @@
 Testing: Line coverage 92% 
-Jira Board(https://team-1606236407721.atlassian.net/jira/software/projects/QAC/boards/8/roadmap)
+
+[Jira Board](https://team-1606236407721.atlassian.net/jira/software/projects/QAC/boards/8/roadmap)
 # QA Cinemas Group Project
 QA Cinemas is a website for a fictional cinema chain known as 'QA Cinemas'. It was created as part of a group project using primarily Scala and features a fully functional website that is populated by information extracted from a database and enables users to book tickets and post reviews on whatever they choose.
 ## Getting Started
@@ -32,6 +33,9 @@ You will then see all the tests being carried out and after all have run, an ove
 
 ## Acknowledgments
 Profanity filter - Areeb Beigh - https://github.com/areebbeigh/profanityfilter/blob/master/profanityfilter/data/badwords.txt
+
 Stylesheets - Bootstrap - https://getbootstrap.com/
+
 Paypal - Mock Paypal Checkout - https://developer.paypal.com/home
+
 Dolan Murvihill - Courier Email Form Handling - https://github.com/dmurvihill/courier
