@@ -4,11 +4,11 @@ import controllers.GettingHereController
 import dao.cinemaDAO
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}
-import play.api.test.{FakeRequest, Helpers}
 import play.api.test.Helpers.{contentAsString, defaultAwaitTimeout}
+import play.api.test.{FakeRequest, Helpers}
 
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 class GettingHereControllerTest extends PlaySpec with Results {
 

@@ -41,20 +41,19 @@ class DiscussionControllerTest extends PlaySpec with Results with GuiceOneAppPer
 
   "Discussion page #discPost" should {
     "be valid" in {
-      val result: Future[Result] = controller.discFormPost().apply(FakeRequest())
+      val discussionJson = Json.obj("id" -> 1, "title" -> "shrek", "description" -> "test description", "rating" -> "10", "onApproved" -> false)
+      val result: Future[Result] = controller.discFormPost().apply(FakeRequest(POST, "discussions/entry").withJsonBody(discussionJson))
       val bodyText = contentAsString(result)
-      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Your review was: SUCCESSFUL</h1>")
     }
   }
 
-  "Discussion page #discPosts" should {
-    "be valid" in {
-      val request = FakeRequest(POST, "/discussions/entry").withJsonBody(Json.parse("""{ "id": "1", "title": "shrek", "description ": "best movie", "rating ": "10", "onApproved ": "0" }"""))
-      //val result = Await.result(call(controller.discForm, request), Duration.Inf)
-      val result = call(controller.discFormPost(), request)
-      //result.body should include ("<h1> Welcome to our discussion board movie lovers! </h1>") //Ok(views.html.discussionPage2(discussionForm.form))
-      //result. must contain ("<h1> Welcome to our discussion board movie lovers! </h1>")
-      contentAsString(result) should include ("<h1 class=\"card-title\" style=\"color: white\">Welcome to our discussion board movie lovers!</h1>")
+  "Discussion page #discPost" should {
+    "be valid (with profanity)" in {
+      val discussionJson = Json.obj("id" -> 1, "title" -> "shrek", "description" -> "wh00r description", "rating" -> "10", "onApproved" -> false)
+      val result: Future[Result] = controller.discFormPost().apply(FakeRequest(POST, "discussions/entry").withJsonBody(discussionJson))
+      val bodyText = contentAsString(result)
+      bodyText should include ("<h1 class=\"card-title\" style=\"color: white\">Your review was: UNSUCCESSFUL</h1>")
     }
   }
 }
