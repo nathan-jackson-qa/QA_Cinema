@@ -7,7 +7,7 @@
         <div class="card border-1 border-light" style="background-color: #0A0227">
             <div class="card-body text-center">
                 <h1 class="card-title" style="color: white">QA Cinemas</h1>
-                <p class="card-text" style="color: #C4B2BC">
+                <p class="card-text" style="color: white">
                     Here at QA Cinemas, we strive to provide the best possible movie going experience that there is to offer, at an extortionate price. With world class projector
                     operators and staff that always have a mile on their face, you'll never choose another cinema branch again.
                 </p>
@@ -32,34 +32,36 @@
         <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5" id="released">
         @for(m <- results.toList.filter(_.isReleased == true).take(10)) {
 
-                <div class="col">
-                    <a class="" href="/listingGallery/@m.id">
-                        <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
-                            background-color: #050113;
-                            color: white">
-                            <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
-                            <h5 class="user-select-none text-center align-items-center justify-content-center p-1 m-0 border-rounded" style="background: #333B84">@m.name</h5>
-                        </div>
-                    </a>
-                </div>
-        }
-        </div>
-
-        <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5 hidden" id="notReleased">
-        @for(m <- results.toList.filter(_.isReleased == false).take(10)) {
-
-                <div class="col">
-                <a class="hover-scale" href="/listingGallery/@m.id">
-                    <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
-                        background-color: #050113;
-                        color: white">
-                        <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
-                        <h5 class="user-select-none text-center align-items-center justify-content-center p-1 m-0 border-rounded" style="background: #333B84">@m.name</h5>
-                    </div>
-                </a>
+            <div class="col">
+                <a class="" href="/listingGallery/@m.id" style="text-decoration: none">
+                <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
+                    background-color: #050113;
+                    color: white">
+                <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
+                <h5 class="user-select-none text-center align-items-center justify-content-center p-1 m-0 border-rounded" style="background: #333B84">@m.name</h5>
             </div>
-
+            </a>
+        </div>
         }
+    </div>
+
+    <div class="row row-cols-3 row-cols-lg-5 g-3 g-lg-5 hidden" id="notReleased">
+    @for(m <- results.toList.filter(_.isReleased == false).take(10)) {
+
+        <div class="col">
+            <a class="hover-scale" href="/listingGallery/@m.id" style="text-decoration: none">
+            <div class="card border-0 border-rounded mini-movie-poster" style="width: 12rem;
+                background-color: #050113;
+                color: white">
+            <img src="assets/@m.img_url" class="card-img-top movie-poster border-0" style="height: 15rem">
+            <h5 class="user-select-none text-center align-items-center justify-content-center p-1 m-0 border-rounded" style="background: #333B84">@m.name</h5>
+        </div>
+        </a>
+    </div>
+
+}
+    </div>
+    </div>
        </div>
     </div>
 <br><br><br>
