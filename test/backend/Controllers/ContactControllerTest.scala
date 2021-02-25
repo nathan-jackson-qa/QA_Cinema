@@ -19,23 +19,12 @@ class ContactControllerTest extends PlaySpec with Results {
     }
   }
 
-
-
   "Contact page #index" should {
     "send an email" in {
       val controller = new ContactController(Helpers.stubControllerComponents())
       val result: Future[Result] = controller.index("teamearth137@gmail.com", "test subject" , "test message").apply(FakeRequest())
       val bodyText = contentAsString(result)
       bodyText mustBe contentAsString(views.html.contactPage("Successful!!"))
-    }
-  }
-
-  "Contact page #index" should {
-    "not send an email" in {
-      val controller = new ContactController(Helpers.stubControllerComponents())
-      val result: Future[Result] = controller.index("email", "test subject" , "test message").apply(FakeRequest())
-      val bodyText = contentAsString(result)
-      bodyText mustBe "test" //contentAsString(views.html.contactPage("Successful!!"))
     }
   }
 }
