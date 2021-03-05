@@ -1,12 +1,13 @@
 package controllers
 
-import dao.movieDAO
+import dao.{cinemaDAO, movieDAO}
 import models.{Movie, Movies}
 import play.api.mvc.Results.Ok
 import play.api.mvc._
 
 import javax.inject._
 import play.api.mvc.{AbstractController, Action, ControllerComponents}
+
 import scala.collection.mutable.Set
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -36,4 +37,5 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       }
     }
   }
+
 }
