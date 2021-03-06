@@ -1,12 +1,12 @@
 package controllers
 
-import dao.{bookingDAO, cinemaDAO, movieDAO}
+import dao.{bookingDAO, cinemaDAO}
 import models.{Booking, Cinema, bookingForm}
 import play.api.mvc._
 
 import java.time.{LocalDate, LocalTime}
-import scala.concurrent.ExecutionContext.Implicits.global
 import javax.inject.{Inject, Singleton}
+import scala.concurrent.ExecutionContext.Implicits.global
 
 @Singleton
 class BookingController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport {

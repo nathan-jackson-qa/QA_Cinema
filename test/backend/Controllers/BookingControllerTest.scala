@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.BookingController
+import controllers.mysql.BookingController
 import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec
 import play.api.libs.json.Json

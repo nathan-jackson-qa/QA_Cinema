@@ -1,8 +1,9 @@
 package dao
 
+import models.CinemaMongo
+
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
-import models.CinemaMongo
 import models.JsonFormats.cinemaFormat
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.api.commands.WriteResult

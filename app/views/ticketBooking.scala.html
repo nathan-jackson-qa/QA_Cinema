@@ -1,5 +1,5 @@
 @import helper._
-@import models.Cinema
+@import models.{Cinema, Booking, bookingForm}
 @(bookingForm: Form[Booking], cinemas: Seq[Cinema], id: Int, title: String, date: java.time.LocalDate, time: java.time.LocalTime)(implicit messages: Messages)
 @main("Ticket Booking") {
 <div class="card border-1 border-light" style="background-color: #0A0227">

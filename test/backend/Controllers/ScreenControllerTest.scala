@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.ScreenController
+import controllers.mysql.ScreenController
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}
 import play.api.test.{FakeRequest, Helpers}

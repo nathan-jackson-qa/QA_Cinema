@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.HomeController
+import controllers.mysql.HomeController
 import dao.movieDAO
 import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec

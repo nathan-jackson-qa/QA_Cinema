@@ -1,9 +1,11 @@
 package dao
 
 import dao.cinemaDAO.{db, table}
-import models.{Booking, Bookings, Cinema}
+import models.{Booking, Bookings}
+import models.Bookings
 import slick.jdbc.MySQLProfile.backend.Database
 import slick.jdbc.MySQLProfile.api._
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 

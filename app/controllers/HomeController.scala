@@ -1,22 +1,18 @@
-package controllers
+package controllers.mysql
 
-import dao.{cinemaDAO, movieDAO}
-import models.{Movie, Movies}
-import play.api.mvc.Results.Ok
-import play.api.mvc._
+import dao.movieDAO
+import models.Movie
+import play.api.mvc.{AbstractController, ControllerComponents}
 
-import javax.inject._
-import play.api.mvc.{AbstractController, Action, ControllerComponents}
-
-import scala.collection.mutable.Set
 import javax.inject.Inject
+import scala.collection.mutable.Set
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def viewAll = Action async {
     movieDAO.getAllMovies map {
-      results => Ok(views.html.homePage(results))
+      results => Ok(views.html.mysql.homePage(results))
     }
   }
 
@@ -33,7 +29,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     movieDAO.searchBykeyword(keyword) map {
       secondResults => {
         var results = movies ++ secondResults.toSet;
-        Ok(views.html.searchResults(results.toSeq))
+        Ok(views.html.mysql.searchResults(results.toSeq))
       }
     }
   }

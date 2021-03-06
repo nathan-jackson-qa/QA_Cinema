@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.placesToGoController
+import controllers.mysql.placesToGoController
 import dao.venuesDAO
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}

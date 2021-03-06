@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.OpeningTimesController
+import controllers.mysql.OpeningTimesController
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}
 import play.api.test.{FakeRequest, Helpers}

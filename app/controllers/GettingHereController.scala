@@ -1,10 +1,11 @@
-package controllers
+package controllers.mysql
+
 import dao.cinemaDAO
 import play.api.i18n.I18nSupport
-import play.api.libs.concurrent.ExecutionContextProvider
-import scala.concurrent.ExecutionContext.Implicits.global
-import javax.inject._
 import play.api.mvc._
+
+import javax.inject._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 @Singleton
 class GettingHereController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with I18nSupport

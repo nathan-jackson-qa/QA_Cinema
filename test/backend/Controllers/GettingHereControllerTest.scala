@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.GettingHereController
+import controllers.mysql.GettingHereController
 import dao.cinemaDAO
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc.{Result, Results}

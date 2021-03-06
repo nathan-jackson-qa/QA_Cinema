@@ -1,8 +1,6 @@
-package controllers
+package controllers.mysql
+
 import courier._
-import play.api.data._
-import play.api.data.Forms._
-import play.api.data.validation.Constraints._
 import play.api.mvc.{AbstractController, ControllerComponents}
 
 import javax.inject.{Inject, Singleton}
@@ -13,7 +11,7 @@ import scala.util.{Failure, Success}
 class ContactController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def contactPage = Action {
-    Ok(views.html.contactPage(" "))
+    Ok(views.html.mysql.contactPage(" "))
     //Redirect(routes.HomeController.index())
   }
 
@@ -34,6 +32,6 @@ class ContactController @Inject()(cc: ControllerComponents) extends AbstractCont
         println("message failed")
         exception.printStackTrace()
     }
-    Ok(views.html.contactPage("Successful!!"))
+    Ok(views.html.mysql.contactPage("Successful!!"))
   }
 }

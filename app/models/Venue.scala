@@ -1,4 +1,5 @@
 package models
+
 import slick.jdbc.MySQLProfile.api._
 case class Venue(id: Int = 0, name: String, address: String, image: String, offers: String, web_address: String, cinema_id: Int, description: String)
 

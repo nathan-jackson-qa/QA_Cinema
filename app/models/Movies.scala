@@ -1,4 +1,5 @@
 package models
+
 import slick.jdbc.MySQLProfile.api._
 
 case class Movie(id: Int, name: String, desc: String, director: String, img_url: String, classification: String, isReleased: Boolean)

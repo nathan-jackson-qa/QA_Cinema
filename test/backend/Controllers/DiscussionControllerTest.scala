@@ -1,7 +1,7 @@
 package backend.Controllers
 
 import akka.stream.Materializer
-import controllers.DiscussionController
+import controllers.mysql.DiscussionController
 import dao.discussionDAO
 import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec

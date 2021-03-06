@@ -20,9 +20,9 @@ POST    /Booking                    controllers.BookingController.inputBooking()
 GET     /Search                     controllers.HomeController.search(search)
 GET     /                           controllers.HomeController.viewAll
 
-#GET     /findCinema/:name           controllers.NotMongoController.findCinema(name)
-GET     /listCinemas                controllers.NotMongoController.listCinemas
-POST    /createCinema               controllers.NotMongoController.create
-GET     /readCinema/:id             controllers.NotMongoController.read(id: reactivemongo.bson.BSONObjectID)
-PUT     /updateCinema/:id           controllers.NotMongoController.update(id: reactivemongo.bson.BSONObjectID)
-DELETE  /deleteCinema/:id        controllers.NotMongoController.delete(id: reactivemongo.bson.BSONObjectID)
+#GET     /findCinema/:name           controllers.mongo.NotMongoController.findCinema(name)
+GET     /listCinemas                controllers.CinemaController.listCinemas
+POST    /createCinema               controllers.CinemaController.create
+GET     /readCinema/:id             controllers.CinemaController.read(id: reactivemongo.bson.BSONObjectID)
+PUT     /updateCinema/:id           controllers.CinemaController.update(id: reactivemongo.bson.BSONObjectID)
+DELETE  /deleteCinema/:id           controllers.CinemaController.delete(id: reactivemongo.bson.BSONObjectID)

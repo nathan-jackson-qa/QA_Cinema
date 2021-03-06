@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.AboutController
+import controllers.mysql.AboutController
 import org.scalatestplus.play.PlaySpec
 import play.api.mvc._
 import play.api.test.Helpers.{contentAsString, defaultAwaitTimeout}

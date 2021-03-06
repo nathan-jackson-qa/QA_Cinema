@@ -1,6 +1,6 @@
 package backend.Controllers
 
-import controllers.GalleryController
+import controllers.mysql.GalleryController
 import dao.movieDAO
 import org.scalatest.matchers.should.Matchers._
 import org.scalatestplus.play.PlaySpec

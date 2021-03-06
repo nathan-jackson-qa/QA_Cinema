@@ -2,9 +2,9 @@ package models
 
 import play.api.data.Form
 import play.api.data.Forms._
-import slick.jdbc.MySQLProfile.api._
 import play.api.data.format.Formats._
-import slick.sql.SqlProfile.ColumnOption.SqlType
+import slick.jdbc.MySQLProfile.api._
+
 import java.sql._
 
 case class Booking(id: Int = 0, name_of_person: String, date: Date, time: String,numOfAdult: Int, numOfChild: Int, deluxe: Boolean, concessions: Double, total: Double, movie_id: Int, cinema_id: Int)
