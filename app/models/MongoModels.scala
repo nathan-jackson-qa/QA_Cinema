@@ -1,8 +1,12 @@
 package models
 
+import play.api.data.Form
+import play.api.data.Forms.{boolean, default, mapping, number, of, text}
+import play.api.data.format.Formats.doubleFormat
 import play.api.libs.json.{Json, OFormat}
 import play.api.libs.json.__
 import reactivemongo.bson.BSONObjectID
+import reactivemongo.bson.BSONDocument
 import reactivemongo.play.json._
 
 case class CinemaMongo(
@@ -27,14 +31,60 @@ case class MovieMongo(
                        title: String,
                        desc: String,
                        director: String,
-                       actors: Seq[ActorMongo],
+                       actors: Seq[BSONDocument],
                        img: String,
                        classification: String,
-                       isReleased: Boolean,
+                       isReleased: Boolean
                      )
+
+case class BookingMongo(
+                  _id: Option[BSONObjectID],
+                  name: String,
+                  date: String,
+                  time: String,
+                  numOfAdult: Int,
+                  numOfChildren: Int,
+                  deluxe: Boolean,
+                  concessions: Double,
+                  total: Double,
+                  movieID: Int,
+                  cinemaID: Int
+                  )
+
+case class BookingData(
+                         name: String,
+                         date: String,
+                         time: String,
+                         numOfAdult: Int,
+                         numOfChildren: Int,
+                         deluxe: Boolean,
+                         concessions: Double,
+                         total: Double,
+                         movieID: Int,
+                         cinemaID: Int
+                       )
+
+object bookingMongoForm {
+  val form: Form[BookingData] = Form(
+    mapping(
+      "name" -> text,
+      "date" -> text,
+      "time" -> text,
+      "numOfAdult" -> number(min = 0, max = 10),
+      "numOfChild" -> number(min = 0, max = 10),
+      "deluxe" -> boolean,
+      "concessions" -> of(doubleFormat),
+      "total" ->  of(doubleFormat),
+      "movie_id" -> number,
+      "cinema_id" -> number
+    )(BookingData.apply)(BookingData.unapply)
+  )
+}
+
 object JsonFormats {
   // Generates Writes and Reads for Feed and User thanks to Json Macros
   implicit val cinemaFormat: OFormat[CinemaMongo] = Json.format[CinemaMongo]
   implicit val actorFormat: OFormat[ActorMongo] = Json.format[ActorMongo]
   implicit val movieFormat: OFormat[MovieMongo] = Json.format[MovieMongo]
+  implicit val bookingFormat: OFormat[BookingMongo] = Json.format[BookingMongo]
 }

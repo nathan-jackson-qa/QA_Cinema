@@ -1,0 +1,79 @@
+@import helper._
+@import models.{Cinema, Booking, bookingForm}
+@(bookingForm: Form[BookingData], cinemas: Seq[Cinema], id: Int, title: String, date: java.time.LocalDate, time: java.time.LocalTime)(implicit messages: Messages)
+@main("Ticket Booking") {
+<div class="card border-1 border-light" style="background-color: #0A0227">
+    <div class="card-body text-center">
+        <h1 class="card-title" style="color: white">You are now booking tickets for @title</h1>
+    </div>
+</div>
+@form(action = routes.BookingController.inputBooking()) {
+    <div class="card mb-5 border-1 border-light" style="background-color: #0A0227; color: white">
+        <div class="container">
+            <div class="row">
+                <div class="card-body p-0">
+                    <br>
+                    <div class="row m-0 p-0">
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @inputText(bookingForm("name_of_person"), 'class -> "form-text", '_showConstraints -> false, '_label -> "Name")
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @inputText(bookingForm("date").copy(value = Some(date.toString)), 'class -> "form-text",'readonly -> "readonly", '_showConstraints -> false, '_label -> "Date")
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @inputText(bookingForm("time").copy(value = Some(time.toString)), 'class -> "form-text",'readonly -> "readonly", '_showConstraints -> false, '_label -> "Time")
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @inputText(bookingForm("numOfAdult"), 'class -> "form-text", '_showConstraints -> false, '_label -> "Number of Adult Tickets", 'type -> "number", 'min -> 0, 'max -> 10)
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @inputText(bookingForm("numOfChild"), 'class -> "form-text", '_showConstraints -> false, '_label -> "Number of Child Tickets", 'type -> "number", 'min -> 0, 'max -> 10)
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @select(field = bookingForm("concessions"), options = Seq("0.0" -> "None", "1.99" -> "Coke - £1.99", "4.99" -> "Coke + Popcorn - £4.99", "7.99" -> "Coke + Popcorn + Nachos - £7.99"), '_showConstraints -> false, '_label -> "Concessions", 'class -> "form-control-s")
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @select(field = bookingForm("cinema_id"), options = cinemas.map(cinema => cinema.id.toString -> cinema.name), '_showConstraints -> false, '_label -> "Cinema", 'class -> "form-control-s")
+
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-text p-2 pt-1" style="color: #D8D4F2">
+                                @select(field = bookingForm("deluxe"), options = Seq("true" -> "Yes", "false" -> "No"), '_label -> "Would you like deluxe seating?", '_showConstraints -> false, 'class -> "form-control-s")
+                            </h6>
+                        </div>
+                    </div>
+                    <br><br>
+                    <input class="btn btn-outline-primary position-absolute bottom-0 end-0 m-2" type="submit" value="Submit">
+                    <a class="btn btn-outline-primary position-absolute bottom-0 m-2" href="/home">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden" style="display: none">
+        @inputText(bookingForm("id").copy(value = Some("0")), 'style -> "display: none", '_label -> "", '_showConstraints -> false)
+        @inputText(bookingForm("movie_id").copy(value = Some(id.toString)), 'readonly -> "readonly", '_showConstraints -> false, 'style -> "display: none", '_label -> "")
+        @inputText(bookingForm("total").copy(value = Some("0")), 'style -> "display: none", '_label -> "", '_showConstraints -> false)
+    </div>
+}
+<br><br>
+}

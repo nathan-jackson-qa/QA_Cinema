@@ -26,3 +26,10 @@ POST    /createCinema               controllers.CinemaController.create
 GET     /readCinema/:id             controllers.CinemaController.read(id: reactivemongo.bson.BSONObjectID)
 PUT     /updateCinema/:id           controllers.CinemaController.update(id: reactivemongo.bson.BSONObjectID)
 DELETE  /deleteCinema/:id           controllers.CinemaController.delete(id: reactivemongo.bson.BSONObjectID)
+
+GET     /listMovies                controllers.MovieController.listMovies
+GET     /listings/:id              controllers.MovieController.listings(id: Int)
+POST    /createMovie               controllers.MovieController.create
+GET     /readMovie/:id             controllers.MovieController.read(id: reactivemongo.bson.BSONObjectID)
+PUT     /updateMovie/:id           controllers.MovieController.update(id: reactivemongo.bson.BSONObjectID)
+DELETE  /deleteMovie/:id           controllers.MovieController.delete(id: reactivemongo.bson.BSONObjectID)

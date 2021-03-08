@@ -1,4 +1,4 @@
-package controllers.mysql
+package controllers
 
 import dao.movieDAO
 import models.Movie
@@ -12,13 +12,13 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
 
   def outNow = Action async  {
     movieDAO.getCurrentMovies map {
-      results => Ok(views.html.mysql.whatsOn(results, "Out Now"))
+      results => Ok(views.html.whatsOn(results, "Out Now"))
     }
   }
 
   def comingSoon = Action async  {
     movieDAO.getUpcomingMovies map {
-      results => Ok(views.html.mysql.whatsOn(results, "Coming Soon"))
+      results => Ok(views.html.whatsOn(results, "Coming Soon"))
     }
   }
 
@@ -26,8 +26,8 @@ class GalleryController @Inject()(cc: ControllerComponents) extends AbstractCont
     val startDate = LocalDate.now
     movieDAO.getMovieActors(id).flatMap { actors =>
       movieDAO.getMovieDetails(id).map {
-        case Some(movie: Movie) => Ok(views.html.mysql.individualWhatsOn(actors, movie, startDate))
-        case None => Ok(views.html.mysql.contactPage(" "))
+        case Some(movie: Movie) => Ok(views.html.individualWhatsOn(actors, movie, startDate))
+        case None => Ok(views.html.contactPage(" "))
       }
 
     }
