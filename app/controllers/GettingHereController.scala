@@ -1,4 +1,4 @@
-package controllers.mysql
+package controllers
 
 import dao.cinemaDAO
 import play.api.i18n.I18nSupport

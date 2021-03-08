@@ -12,25 +12,25 @@ class DiscussionController @Inject()(cc: ControllerComponents) extends AbstractC
 
   def index() = Action async {
     discussionDAO.getReviews map {
-      results => Ok(views.html.mysql.discussionPage(results))
+      results => Ok(views.html.discussionPage(results))
     }
   }
 
   def discForm() = Action {
     implicit request: Request[AnyContent] =>
-      Ok(views.html.mysql.discussionPage2(discussionForm.form))
+      Ok(views.html.discussionPage2(discussionForm.form))
   }
 
   def discFormPost() = Action { implicit request: Request[AnyContent] =>
-    discussionForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.mysql.discussionPage2(formWithErrors)) },
+    discussionForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.discussionPage2(formWithErrors)) },
       { widget => {
         if (split(widget.description) == true || split(widget.title) == true) {
           discussionDAO.create(Discussion(widget.id, widget.title, widget.description, widget.rating, false))
-          Ok(views.html.mysql.moderation(widget, "UNSUCCESSFUL"))
+          Ok(views.html.moderation(widget, "UNSUCCESSFUL"))
         }
         else {
           discussionDAO.create(Discussion(widget.id, widget.title, widget.description, widget.rating, true))
-          Ok(views.html.mysql.moderation(widget, "SUCCESSFUL"))
+          Ok(views.html.moderation(widget, "SUCCESSFUL"))
         }
       }
       }

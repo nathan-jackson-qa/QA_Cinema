@@ -1,4 +1,4 @@
-package controllers.mysql
+package controllers
 
 import dao.movieDAO
 import models.Movie
@@ -12,7 +12,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
   def viewAll = Action async {
     movieDAO.getAllMovies map {
-      results => Ok(views.html.mysql.homePage(results))
+      results => Ok(views.html.homePage(results))
     }
   }
 
@@ -29,7 +29,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     movieDAO.searchBykeyword(keyword) map {
       secondResults => {
         var results = movies ++ secondResults.toSet;
-        Ok(views.html.mysql.searchResults(results.toSeq))
+        Ok(views.html.searchResults(results.toSeq))
       }
     }
   }

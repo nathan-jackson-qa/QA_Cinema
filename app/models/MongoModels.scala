@@ -38,7 +38,6 @@ case class MovieMongo(
                      )
 
 case class BookingMongo(
-                  _id: Option[BSONObjectID],
                   name: String,
                   date: String,
                   time: String,
@@ -52,6 +51,7 @@ case class BookingMongo(
                   )
 
 case class BookingData(
+                        _id: Option[BSONObjectID],
                          name: String,
                          date: String,
                          time: String,
@@ -65,7 +65,7 @@ case class BookingData(
                        )
 
 object bookingMongoForm {
-  val form: Form[BookingData] = Form(
+  val form: Form[BookingMongo] = Form(
     mapping(
       "name" -> text,
       "date" -> text,
@@ -77,7 +77,7 @@ object bookingMongoForm {
       "total" ->  of(doubleFormat),
       "movie_id" -> number,
       "cinema_id" -> number
-    )(BookingData.apply)(BookingData.unapply)
+    )(BookingMongo.apply)(BookingMongo.unapply)
   )
 }
 
@@ -87,4 +87,5 @@ object JsonFormats {
   implicit val actorFormat: OFormat[ActorMongo] = Json.format[ActorMongo]
   implicit val movieFormat: OFormat[MovieMongo] = Json.format[MovieMongo]
   implicit val bookingFormat: OFormat[BookingMongo] = Json.format[BookingMongo]
+  implicit val bookingDataFormat: OFormat[BookingData] = Json.format[BookingData]
 }

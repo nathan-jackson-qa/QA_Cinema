@@ -1,7 +1,7 @@
 package dao
 
-import models.JsonFormats.bookingFormat
-import models.BookingMongo
+import models.JsonFormats.{bookingFormat, bookingDataFormat}
+import models.{BookingData, BookingMongo}
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.api.commands.WriteResult
 import reactivemongo.api.{Cursor, ReadPreference}
@@ -26,28 +26,27 @@ class mongoBookingDAO  @Inject()(implicit ec: ExecutionContext, reactiveMongoApi
   def create(booking: BookingMongo): Future[WriteResult] =
     collection.flatMap(_.insert(booking))
 
-  def read(id: BSONObjectID): Future[Option[BookingMongo]] =
-    collection.flatMap((_.find(BSONDocument("_id" -> id)).one[BookingMongo]))
+  def read(id: BSONObjectID): Future[Option[BookingData]] =
+    collection.flatMap((_.find(BSONDocument("_id" -> id)).one[BookingData]))
 
-  def update(id: BSONObjectID, booking: BookingMongo): Future[Option[BookingMongo]] =
-    collection.flatMap(_.findAndUpdate(BSONDocument("_id" -> id), BSONDocument(f"$$set" -> BSONDocument(
-      "_id" -> booking._id,
-      "name" -> booking.name,
-      "date" -> booking.date,
-      "time" -> booking.time,
-      "numOfAdult" -> booking.numOfAdult,
-      "numOfChildren" -> booking.numOfChildren,
-      "deluxe" -> booking.deluxe,
-      "concessions" -> booking.concessions,
-      "total" -> booking.total,
-      "movieID" -> booking.movieID,
-      "cinemaID" -> booking.cinemaID
-
-  )
-    ), true)
-      .map(_.result[BookingMongo]))
+//  def update(id: BSONObjectID, booking: BookingMongo): Future[Option[BookingMongo]] =
+//    collection.flatMap(_.findAndUpdate(BSONDocument("_id" -> id), BSONDocument(f"$$set" -> BSONDocument(
+//      "name" -> booking.name,
+//      "date" -> booking.date,
+//      "time" -> booking.time,
+//      "numOfAdult" -> booking.numOfAdult,
+//      "numOfChildren" -> booking.numOfChildren,
+//      "deluxe" -> booking.deluxe,
+//      "concessions" -> booking.concessions,
+//      "total" -> booking.total,
+//      "movieID" -> booking.movieID,
+//      "cinemaID" -> booking.cinemaID
 //
-  def delete(id: BSONObjectID): Future[Option[BookingMongo]] =
-    collection.flatMap(_.findAndRemove(BSONDocument("_id" ->  id)).map(_.result[BookingMongo]))
+//  )
+//    ), true)
+//      .map(_.result[BookingMongo]))
+////
+//  def delete(id: BSONObjectID): Future[Option[BookingMongo]] =
+//    collection.flatMap(_.findAndRemove(BSONDocument("_id" ->  id)).map(_.result[BookingMongo]))
 
 }

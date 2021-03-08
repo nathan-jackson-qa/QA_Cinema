@@ -1,4 +1,4 @@
-package controllers.mysql
+package controllers
 
 import dao.venuesDAO
 import play.api.i18n.I18nSupport
@@ -11,7 +11,7 @@ class placesToGoController @Inject()(cc: ControllerComponents) extends AbstractC
 
   def showCinemaVenue(id: Int) = Action async {
     venuesDAO.getAllVenuesById(id) map {
-      selectedResults => Ok(views.html.mysql.placesToGo2(selectedResults))
+      selectedResults => Ok(views.html.placesToGo2(selectedResults))
     }
   }
 }

@@ -33,3 +33,7 @@ POST    /createMovie               controllers.MovieController.create
 GET     /readMovie/:id             controllers.MovieController.read(id: reactivemongo.bson.BSONObjectID)
 PUT     /updateMovie/:id           controllers.MovieController.update(id: reactivemongo.bson.BSONObjectID)
 DELETE  /deleteMovie/:id           controllers.MovieController.delete(id: reactivemongo.bson.BSONObjectID)
+
+POST    /createBooking             controllers.BookingMongoController.createBooking
+GET     /ticketMongoBooking        controllers.BookingMongoController.form
+POST    /mongoBooking              controllers.BookingMongoController.create()

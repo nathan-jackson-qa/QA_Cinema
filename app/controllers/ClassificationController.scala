@@ -1,4 +1,4 @@
-package controllers.mysql
+package controllers
 
 import play.api.mvc._
 
@@ -8,6 +8,6 @@ import javax.inject._
 class ClassificationController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def classification = Action {
-    Ok(views.html.mysql.Classifications())
+    Ok(views.html.Classifications())
   }
 }

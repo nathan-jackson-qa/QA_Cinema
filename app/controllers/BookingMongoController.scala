@@ -1,8 +1,8 @@
 package controllers
 
-import dao.mongoBookingDAO
-import models.{Booking, BookingData, BookingMongo, Cinema, bookingForm, bookingMongoForm}
-import models.JsonFormats.bookingFormat
+import dao.{mongoBookingDAO, mongoCinemaDAO}
+import models.{BookingMongo, CinemaMongo, bookingMongoForm}
+import models.JsonFormats.{bookingFormat,bookingDataFormat}
 import play.api.http.Writeable.wBytes
 import play.api.libs.json.Json
 import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
@@ -14,7 +14,7 @@ import java.time.{LocalDate, LocalTime}
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
-class BookingMongoController @Inject()(components: ControllerComponents, val reactiveMongoApi: ReactiveMongoApi, dao: mongoBookingDAO) extends AbstractController(components)
+class BookingMongoController @Inject()(components: ControllerComponents, val reactiveMongoApi: ReactiveMongoApi, dao: mongoBookingDAO, cinemaDAO: mongoCinemaDAO) extends AbstractController(components)
   with MongoController with ReactiveMongoComponents with play.api.i18n.I18nSupport {
   implicit def ec: ExecutionContext = components.executionContext
 
@@ -23,8 +23,12 @@ class BookingMongoController @Inject()(components: ControllerComponents, val rea
       Ok(Json.toJson(bookings))}
   }
 
+  def form() = Action {  implicit request: Request[AnyContent] =>
+        Ok(views.html.mongoTicketBooking(bookingMongoForm.form))
+  }
+
   def create = Action { implicit request: Request[AnyContent] =>
-    bookingMongoForm.form.bindFromRequest().fold({ formWithErrors => BadRequest(views.html.mongoTicketBooking) },
+    bookingMongoForm.form.bindFromRequest().fold({ formWithErrors => println(formWithErrors.data); BadRequest(views.html.mongoTicketBooking(formWithErrors)) },
       { widget =>
         val x = getPrice(widget)
         dao.create(x)
@@ -32,7 +36,7 @@ class BookingMongoController @Inject()(components: ControllerComponents, val rea
       })
   }
 
-  def getPrice(b: BookingData): BookingMongo = {
+  def getPrice(b: BookingMongo): BookingMongo = {
     var total = 0.0
     if(b.deluxe){
       val adultPrice = 12.49
@@ -46,6 +50,15 @@ class BookingMongoController @Inject()(components: ControllerComponents, val rea
     }
     BookingMongo(b.name, b.date, b.time, b.numOfAdult, b.numOfChildren, b.deluxe, b.concessions, total, b.movieID, b.cinemaID)
   }
+
+
+  def createBooking = Action.async(parse.json) {
+    _.body.validate[BookingMongo].map { result =>
+      dao.create(result).map { _ =>
+        Created}
+    }.getOrElse(Future.successful(BadRequest("Invalid cinema")))
+  }
+
   def read(id: BSONObjectID) = Action.async {
     dao.read(id).map { maybeBooking =>
       maybeBooking.map { result =>
@@ -53,20 +66,20 @@ class BookingMongoController @Inject()(components: ControllerComponents, val rea
       }.getOrElse((NotFound))
     }
   }
-
-  def update(id: BSONObjectID) = Action.async(parse.json) {
-    _.body.validate[BookingMongo].map { result =>
-      dao.update(id, result).map {
-        case Some(feed) =>Ok(Json.toJson(feed))
-        case _ => NotFound
-      }
-    }.getOrElse(Future.successful(BadRequest("Invalid update")))
-  }
-
-  def delete(id: BSONObjectID) = Action async {
-    dao.delete(id).map {
-      case Some(booking) => Ok(Json.toJson(booking))
-      case _ => NotFound
-    }
-  }
+//
+//  def update(id: BSONObjectID) = Action.async(parse.json) {
+//    _.body.validate[BookingMongo].map { result =>
+//      dao.update(id, result).map {
+//        case Some(feed) =>Ok(Json.toJson(feed))
+//        case _ => NotFound
+//      }
+//    }.getOrElse(Future.successful(BadRequest("Invalid update")))
+//  }
+//
+//  def delete(id: BSONObjectID) = Action async {
+//    dao.delete(id).map {
+//      case Some(booking) => Ok(Json.toJson(booking))
+//      case _ => NotFound
+//    }
+//  }
 }
